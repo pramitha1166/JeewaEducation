@@ -1,25 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-  <meta charset="utf-8">
+ <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - 404</title>
+  <title>SB Admin 2 - Tables</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template -->
+  <link href="../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- Custom styles for this page -->
+  <link href="../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -95,12 +96,12 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
@@ -108,7 +109,7 @@
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item active" href="404.html">404 Page</a>
+            <a class="collapse-item" href="404.html">404 Page</a>
             <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
         </div>
@@ -122,7 +123,7 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
@@ -149,9 +150,11 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+          <form class="form-inline">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+          </form>
 
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -256,7 +259,7 @@
                   </div>
                   <div class="font-weight-bold">
                     <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler Â· 58m</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -266,7 +269,7 @@
                   </div>
                   <div>
                     <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun Â· 1d</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -276,7 +279,7 @@
                   </div>
                   <div>
                     <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -286,7 +289,7 @@
                   </div>
                   <div>
                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog Â· 2w</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
                   </div>
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -331,12 +334,223 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- 404 Error Text -->
-          <div class="text-center">
-            <div class="error mx-auto" data-text="404">404</div>
-            <p class="lead text-gray-800 mb-5">Page Not Found</p>
-            <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-            <a href="index.html">&larr; Back to Dashboard</a>
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>Age</th>
+                      <th>Start date</th>
+                      <th>Salary</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>Age</th>
+                      <th>Start date</th>
+                      <th>Salary</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>     
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>    
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Ashton Cox</td>
+                      <td>Junior Technical Author</td>
+                      <td>San Francisco</td>
+                      <td>66</td>
+                      <td>2009/01/12</td>
+                      <td>$86,000</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Cedric Kelly</td>
+                      <td>Senior Javascript Developer</td>
+                      <td>Edinburgh</td>
+                      <td>22</td>
+                      <td>2012/03/29</td>
+                      <td>$433,060</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Airi Satou</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>33</td>
+                      <td>2008/11/28</td>
+                      <td>$162,700</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Brielle Williamson</td>
+                      <td>Integration Specialist</td>
+                      <td>New York</td>
+                      <td>61</td>
+                      <td>2012/12/02</td>
+                      <td>$372,000</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Herrod Chandler</td>
+                      <td>Sales Assistant</td>
+                      <td>San Francisco</td>
+                      <td>59</td>
+                      <td>2012/08/06</td>
+                      <td>$137,500</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Rhona Davidson</td>
+                      <td>Integration Specialist</td>
+                      <td>Tokyo</td>
+                      <td>55</td>
+                      <td>2010/10/14</td>
+                      <td>$327,900</td>
+                      <td> <a href="#" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                           </a>
+                    </td>
+                    <td> <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                         </a>
+                    </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -373,7 +587,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">Ã—</span>
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -386,15 +600,21 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../static/admin/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../static/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../static/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../static/admin/js/demo/datatables-demo.js"></script>
 
 </body>
-
 </html>
