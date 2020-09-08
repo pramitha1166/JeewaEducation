@@ -27,8 +27,6 @@
 
 <body id="page-top">
 
-${pendingvisa}
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -48,25 +46,25 @@ ${pendingvisa}
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="visa_dashboard.html">
+        <a class="nav-link" href="/admin/visa-dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
+      <li class="nav-item ">
+        <a class="nav-link" href="/admin/visa-pendingstudents">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Visa Acceptable Students</span></a>
+      </li>
       <li class="nav-item active">
-        <a class="nav-link" href="visa_pending_students.html">
+        <a class="nav-link" href="/admin/visa-pendinglist">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pending Students</span></a>
+          <span>Pending VISA for Verification</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>VISA processing Section</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>VISA verifed</span></a>
+          <span>Verified VISA</span></a>
       </li>
 
       <!-- Divider -->

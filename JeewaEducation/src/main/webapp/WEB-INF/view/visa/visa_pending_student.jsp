@@ -24,8 +24,6 @@
 </head>
 <body id="page-top">
 
-${visastudentlist}
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -53,17 +51,17 @@ ${visastudentlist}
       <li class="nav-item active">
         <a class="nav-link" href="/admin/visa-pendingstudents">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pending Students</span></a>
+          <span>Visa Acceptable Students</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/admin/visa-pendinglist">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>VISA processing Section</span></a>
+          <span>Pending VISA for Verification</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>VISA verifed</span></a>
+          <span>Verfied VISA</span></a>
       </li>
 
       <!-- Divider -->

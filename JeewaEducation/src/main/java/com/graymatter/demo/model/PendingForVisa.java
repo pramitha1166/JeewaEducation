@@ -8,6 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class PendingForVisa {
@@ -15,17 +24,48 @@ public class PendingForVisa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
+	@NotEmpty
+	@Size(min = 3, max = 30)
 	private String fname;
+
+
+	@NotEmpty
+	@Size(min = 3, max = 30)
 	private String lname;
+
+	@NotEmpty
+	@Size(min = 3, max = 30)
 	private String other;
+	
+	@Email 
+	@NotEmpty
 	private String email;
+
+	@NotEmpty
 	private String gender;
+
+	@NotEmpty
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull
 	private String dob;
+	
+	@NotEmpty
+	@Size(min = 3,max = 30)
 	private String city;
+	
+	@NotEmpty
+	@Size(min = 3,max = 30)
 	private String state;
+
 	private int zip;
+
+	@NotEmpty
+	@Size(min = 3,max = 30)
 	private String marrage;
+
+	@NotEmpty
+	@Size(min = 3,max = 30)
 	private String country;
 /*	
 	@OneToOne(fetch = FetchType.LAZY, optional = false)

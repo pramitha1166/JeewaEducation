@@ -39,10 +39,10 @@ public class VisaProfileController {
 		return "visa/profile/visaprofile_03";
 	}
 	
-	@GetMapping("/profile/submitvisaapplication")
-	public String visaapplicationsubmit() {
-		return "visa/profile/submit_visa_application";
-	}
+	//@GetMapping("/profile/submitvisaapplication")
+	//public String visaapplicationsubmit() {
+		//return "visa/profile/submit_visa_application";
+	//}
 	
 	@GetMapping("/profile/visa")
 	public String visaProfileLogin() {
