@@ -33,7 +33,7 @@ public class PendingForVisaController {
 	@Autowired
 	PendingForVisaService service;
 	
-	@RequestMapping(value = "/profile/pendingvisa", method = RequestMethod.GET)
+	@RequestMapping(value = "/profile/submitpendingvisa", method = RequestMethod.GET)
 	public String addVisaApplication(Model model) {
 		model.addAttribute("pendingforvisa", new PendingForVisa());
 		return "visa/profile/submit_visa_application";
@@ -52,8 +52,14 @@ public class PendingForVisaController {
 		return "visa/profile/submit_visa_application";
 	}
 	
+	
 	@PostMapping(value = "/admin/updatevisa")
-	public String updateVisaApplication(@RequestParam int id,PendingForVisa pendingforvisa) {
+	public String updateVisaApplication(@RequestParam int id,PendingForVisa pendingforvisa, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "visa/viewvisastudent";
+		}
+		
 		service.deletePendingVisa(id);
 		service.addPendingVisa(pendingforvisa);
 		return "redirect:/admin/visa-pendinglist";
@@ -88,7 +94,7 @@ public class PendingForVisaController {
 		
 		PendingForVisa penvisa = service.getVisaById(id);
 		
-		model.put("pendingvisa", penvisa);
+		model.addAttribute("pendingforvisa",penvisa);
 		//req.setAttribute("pendingvisa", penvisa);
 		
 		//mv.addObject("pendingvisa",penvisa);

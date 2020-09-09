@@ -1,6 +1,7 @@
 package com.graymatter.demo.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.sun.istack.NotNull;
@@ -40,6 +42,7 @@ public class PendingForVisa {
 	
 	@Email 
 	@NotEmpty
+	@Column(unique = true)
 	private String email;
 
 	@NotEmpty

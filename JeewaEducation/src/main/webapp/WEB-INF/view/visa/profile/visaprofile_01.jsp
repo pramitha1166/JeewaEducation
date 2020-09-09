@@ -5,6 +5,7 @@
     	if(session.getAttribute("visauserid")==null){
     		response.sendRedirect("/profile/visa");
     	}
+    
     %>
     
 <!DOCTYPE html>
@@ -296,7 +297,7 @@
 	          <br>
 	          <p>1. Fill and submit VISA application which is provide by university. click below button to apply for VISA.</p>
 	
-	          <button class="btn btn-primary mb-2"><a href="/profile/submitvisaapplication">Apply Now</a></button>
+	          <button class="btn btn-primary mb-2"><a href="/profile/submitpendingvisa?id=">Apply Now</a></button>
 	          <p>2. Wait until verify your application by agency.</p>
 	          <p>3. After verified your application, submit relavent document which required to VISA process. (  After verify your application, system will visible VISA submission application form with new interface. )</p>
 	          <p>4. After verify your VISA submission details, you have to face interview which conduct by Embassy. ( We will notify you interview date with time. )</p>

@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     
         <%
+        
+        
+        
     //	if(session.getAttribute("visauserid")==null){
     	//	response.sendRedirect("/profile/visa");
     	//}

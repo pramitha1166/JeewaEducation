@@ -281,7 +281,7 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Update VISA Application Form Details</h1>
          
-          <form  class="was-validated" method="post" action="updatevisa">
+          <form:form  modelAttribute="pendingforvisa" class="wasvalidated" method="post" action="updatevisa">
 
             <div class="form-row">
                 <div class="col-md-3 mb-3">
@@ -290,28 +290,32 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                       </div>
-                      <input name="id" type="text" value="${pendingvisa.id}" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly">
-                      <div class="invalid-tooltip">
-                        Please choose a unique and valid username.
-                      </div>
+                      <form:input path="id" name="id" type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>                     
                     </div>
                   </div>
             </div>
 
             <div class="form-row">
-              <div class="col-md-6 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationTooltip01">First name</label>
-                <input name="fname" type="text" class="form-control" id="firstname" value="${pendingvisa.fname}" placeholder="First name"  required/>
-                <div class="valid-tooltip">
-                  Looks good!
-                </div>
+                <form:input path="fname" name="fname" type="text" class="form-control" id="firstname"  placeholder="First name"  />
+                  <div class="has-error">
+                  	<form:errors path="fname" class="help-inline" style="color:red;" />
+                  </div>
               </div>
-              <div class="col-md-6 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationTooltip02">Last name</label>
-                <input name="lname" type="text" class="form-control" id="lastname" placeholder="Last name" value="${pendingvisa.lname}"  required>
-                <div class="valid-tooltip">
-                  Looks good!
-                </div>
+                <form:input path="lname" name="lname" type="text" class="form-control" id="lastname" placeholder="Last name"   />
+                 <div class="has-error">
+                  	<form:errors path="lname" class="help-inline" style="color:red;" />
+                  </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip02">Other name</label>
+                <form:input path="other" name="lname" type="text" class="form-control" id="othername" placeholder="Other name"   />
+                 <div class="has-error">
+                  	<form:errors path="other" class="help-inline" style="color:red;" />
+                  </div>
               </div>
               
             </div>
@@ -320,10 +324,10 @@
                 <div class="col-md-6 mb-3 mt-3">
                     <label for="validationTooltipUsername">Personal Email for VISA Process</label>
                     <div class="input-group">
-                      <input name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  class="form-control" id="visaemail"  placeholder="student@gmail.com" value="${pendingvisa.email}" aria-describedby="validationTooltipUsernamePrepend" required>
-                      <div class="invalid-tooltip">
-                        Please Enter Valid Email.
-                      </div>
+                      <form:input path="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  class="form-control" id="visaemail"  placeholder="student@gmail.com"  aria-describedby="validationTooltipUsernamePrepend" />
+                       <div class="has-error">
+                  	<form:errors path="email" class="help-inline" style="color:red;" />
+                  </div>
                     </div>
                   </div>
             </div>
@@ -334,22 +338,25 @@
                     <label for="validationTooltipUsername">Gender</label>
                     <div class="input-group">
 
-                        <select class="custom-select" id="gender" name="gender" required>
-                            <option value="${pendingvisa.gender}">${pendingvisa.gender}</option>
+                        <form:select path="gender" class="custom-select" id="gender" name="gender" >
+                            <option >Select the gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
-                          </select>
+                          </form:select>
                     </div>
+                      <div class="has-error">
+                  	<form:errors path="gender" class="help-inline" style="color:red;" />
+                  </div>
                   </div>
 
                   <div class="col-md-6 mb-3 mt-3">
                     <label for="validationTooltipUsername">Select Date Of Birth</label>
                     <div class="input-group">
-                      <input type="date" class="form-control" name="dob" value="${pendingvisa.dob}" id="dateofbirth"  value="09/02/1998" aria-describedby="validationTooltipUsernamePrepend" required>
-                      <div class="invalid-tooltip">
-                        Please Slect Date Of Birth.
-                      </div>
+                      <form:input path="dob" type="date" class="form-control" name="dob"  id="dateofbirth"  aria-describedby="validationTooltipUsernamePrepend" />
+                        <div class="has-error">
+                  	<form:errors path="dob" class="help-inline" style="color:red;" />
+                  </div>
                     </div>
                   </div>
 
@@ -359,22 +366,22 @@
 
             <div class="form-row ">
               <div class="col-md-6 mb-3">
-                <input type="text" class="form-control" name="city" value="${pendingvisa.city}" id="city" placeholder="City"  required>
-                <div class="invalid-tooltip">
-                  Please provide a valid city.
-                </div>
+                <form:input path="city" type="text" class="form-control" name="city" id="city" placeholder="City"  />
+                <div class="has-error">
+                  	<form:errors path="city" class="help-inline" style="color:red;" />
+                  </div>
               </div>
               <div class="col-md-3 mb-3 ">
-                <input type="text" class="form-control" name="state" id="state" value="${pendingvisa.state}" placeholder="State"   required>
-                <div class="invalid-tooltip">
-                  Please provide a valid state.
-                </div>
+                <form:input path="state" type="text" class="form-control" name="state" id="state" placeholder="State"   />
+                  <div class="has-error">
+                  	<form:errors path="state" class="help-inline" style="color:red;" />
+                  </div>
               </div>
               <div class="col-md-3 mb-3 ">
-                <input type="text" class="form-control" name="zip" id="zip" placeholder="Zip" value="${pendingvisa.zip}"  required>
-                <div class="invalid-tooltip">
-                  Please provide a valid zip.
-                </div>
+                <form:input path="zip" type="text" class="form-control" name="zip" id="zip" placeholder="Zip"  />
+                  <div class="has-error">
+                  	<form:errors path="zip" class="help-inline" style="color:red;" />
+                  </div>
               </div>
             </div>
 
@@ -384,24 +391,30 @@
                     <label for="validationTooltipUsername">Current Martial Status</label>
                     <div class="input-group">
 
-                        <select class="custom-select" id="marrage" name="marrage"  required>
-                            <option value="${pendingvisa.marrage}">${pendingvisa.marrage}</option>
+                        <form:select class="custom-select" id="marrage" name="marrage"  path="marrage">
+                            <option ></option>
                             <option value="Married">Married</option>
                             <option value="Engaged">Engaged</option>
                             <option value="Not-Married">Not-Married</option>
-                          </select>
+                          </form:select>
                     </div>
+                      <div class="has-error">
+                  	<form:errors path="marrage" class="help-inline" style="color:red;" />
+                  </div>
                   </div>
                 </div> 
 
                   <div class="col-md-6 mb-2 mt-3">
                     <label for="validationTooltip01">Country Of Current Residence</label>
-                    <input type="text" class="form-control" id="currentResidence" name="country"  placeholder="Country Name" value="${pendingvisa.country}" required>
+                    <form:input path="country" type="text" class="form-control" id="currentResidence" name="country"  placeholder="Country Name"  />
+                      <div class="has-error">
+                  	<form:errors path="country" class="help-inline" style="color:red;" />
+                  </div>
             	</div>
 			
-			<input type="submit" class="btn btn-primary mt-4" value="Update"/>
+			<input type="submit" class="btn btn-primary mt-4" value="Update">
             <button class="btn btn-secondary mt-4 ml-4" type="submit" id="cancel">Cancel</button>
-          </form>
+          </form:form>
         </div>
         <!-- /.container-fluid -->
 
