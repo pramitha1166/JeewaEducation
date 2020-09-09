@@ -1,3 +1,4 @@
+<!-- IT19056326 S.P.P.P.Wanigarathne -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -424,7 +425,7 @@
                   </div>
               </div>
   
-              <form:button class="btn btn-primary mt-4" type="submit" id="updateText">Submit</form:button>
+              <form:button onclick="getAdd();" class="btn btn-primary mt-4" type="submit" id="updateText">Submit</form:button>
               <button class="btn btn-secondary mt-4 ml-4" type="reset" id="cancel" >Reset</button>
             </form:form>
           </div>
@@ -468,7 +469,23 @@
   <!-- Custom scripts for all pages-->
   		<script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
+  <script>
 
+	function getAdd() {
+
+		var retVal = confirm("Are You Sure to Apply?");
+		if(retVal==true) {
+			return true;
+			} 
+		else {
+			return false;	
+			} 
+		
+		}
+
+
+</script>	
+  
 
     </body>
 </html>

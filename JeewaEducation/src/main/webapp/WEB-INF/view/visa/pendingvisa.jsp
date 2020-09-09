@@ -1,3 +1,5 @@
+<!-- IT19056326 S.P.P.P.Wanigarathne -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -331,7 +333,7 @@
                           </span>
                           <span class="text">View</span>
                         </a></td>
-                        <td><a href="deletependingvisa?id=${pendingforvisa.id}" class="btn btn-danger btn-icon-split">
+                        <td><a onclick="getDelete();" href="deletependingvisa?id=${pendingforvisa.id}" class="btn btn-danger btn-icon-split" >
                           <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
                           </span>
@@ -391,6 +393,23 @@
       </div>
     </div>
   </div>
+
+<script>
+
+	function getDelete() {
+
+		var retVal = confirm("Do You Want to Dlete This Record?");
+		if(retVal==true) {
+			return true;
+			} 
+		else {
+			return false;	
+			} 
+		
+		}
+
+
+</script>	
 
   <!-- Bootstrap core JavaScript-->
   <script src="../static/admin/vendor/jquery/jquery.min.js"></script>

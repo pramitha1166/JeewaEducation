@@ -1,3 +1,4 @@
+<!-- IT19056326 S.P.P.P.Wanigarathne -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -412,7 +413,7 @@
                   </div>
             	</div>
 			
-			<input type="submit" class="btn btn-primary mt-4" value="Update">
+			<input onclick="getUpdate();" type="submit" class="btn btn-primary mt-4" value="Update">
             <button class="btn btn-secondary mt-4 ml-4" type="submit" id="cancel">Cancel</button>
           </form:form>
         </div>
@@ -460,6 +461,24 @@
       </div>
     </div>
   </div>
+  
+  
+  <script>
+
+	function getUpdate() {
+
+		var retVal = confirm("Do You Want to Update This Record?");
+		if(retVal==true) {
+			return true;
+			} 
+		else {
+			return false;	
+			} 
+		
+		}
+
+
+</script>	
   
   <script>
 
