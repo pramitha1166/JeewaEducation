@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -289,6 +291,7 @@
                     <tr>
                       <th>Student ID</th>
                       <th>Name</th>
+                      <th>Student ID</th>
                       <th>Bank</th>
                       <th>Branch</th>
                       <th>Deposited Amount</th>
@@ -301,6 +304,7 @@
                     <tr>
                       <th>Student ID</th>
                       <th>Name</th>
+                      <th>Student ID</th>
                       <th>Bank</th>
                       <th>Branch</th>
                       <th>Deposited Amount</th>
@@ -310,14 +314,16 @@
                     </tr>
                   </tfoot>
                   <tbody>
+                  <c:forEach var="PaymentForFB" items="${listFBPayment}">
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-					  <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/04/25</td>
+                      <td>${PaymentForFB.id}</td>
+                      <td>${PaymentForFB.name}</td>
+                      <td>${PaymentForFB.studentId}</td>
+                      <td>${PaymentForFB.depositedAmount}</td>
+                      <td>${PaymentForFB.bank}</td>
+					  <td>${PaymentForFB.branch}</td>
+                      <td>${PaymentForFB.date}</td>
+                      <td>${PaymentForFB.paymentSlip}</td>
                       <td><a href="#" class="btn btn-danger btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
@@ -325,21 +331,7 @@
                           <span class="text">Delete</span>
                         </a></td>
                     </tr>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-					  <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/04/25</td>
-                      <td><a href="#" class="btn btn-danger btn-icon-split">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-trash"></i>
-                          </span>
-                          <span class="text">Delete</span>
-                        </a></td>
-                    </tr>
+                    </c:forEach>
                   </tbody>
                 </table>
               </div>

@@ -350,19 +350,21 @@ input[type="text"] {
 								</div>
 								<div class="card-body">
 								<form class="was-validated" action="expencesupdate" method="post">
-									<label>Expences ID</label><br> <input type="text" /><br>
-									<label>Expences Type</label><br> <input type="text" /><br>
+									<label>Expences ID</label><br> <input type="text" readonly/><br>
+									<label>Expences Type</label><br> <input type="text" readonly /><br>
 									<label>Amount (Rs.)</label><br> <input type="text" /><br>
-									<br> <button class="a" type="submit" id="updateExpences"><a href="#" class="btn btn-warning btn-icon-split">
+									<a href="#" class="btn btn-warning btn-icon-split">
 										<span class="icon text-white-50"> <i
 											class="fas fa-exclamation-triangle"></i>
 									</span> <span class="text">Update</span>
-									</a></button>
-									</form>
+									</a>
+									
 									 <a href="#" class="btn btn-danger btn-icon-split"> <span
 										class="icon text-white-50"> <i class="fas fa-trash"></i>
 									</span> <span class="text">Delete</span>
 									</a>
+									
+								</form>
 								</div>
 							</div>
 
@@ -376,26 +378,22 @@ input[type="text"] {
 										(Expence)</h6>
 								</div>
 								<div class="card-body">
-									<form class="was-validated" action="addexpences" method="post">
-										<label>Expence ID</label><br> <input type="text" name="id"/><br>
-										<label>Expence Type</label><br> <input type="text" name="type" /><br>
-										<label>Amount (Rs.)</label><br> <input type="text" name="amount"/><br>
-										<br> 
+									<form class="was-validated" action="submitexpences" method="post">
+										<label>Expence ID</label><br> 
+										<input type="text" name="id" required/><br>
+										<label>Expence Type</label><br>
+										<input type="text" name="type" required/><br>
+										<label>Amount (Rs.)</label><br> 
+										<input type="text" name="amount" required/><br><br> 
+										<button class="btn btn-primary mt-4" type="submit" id="updateText">
 										<a class="btn btn-success btn-icon-split"> 
 										<span class="icon text-white-50"> <i class="fas fa-check"></i></span>
 										<span class="text">Save and Add</span>
-										</a>
+										</a></button>
 									</form>
 								</div>
 							</div>
 						</div>
-
-
-
-
-
-
-
 					</div>
 
 
@@ -450,23 +448,20 @@ input[type="text"] {
 		</div>
 
 		<!-- Bootstrap core JavaScript-->
-		<script src="../adminAssets/vendor/jquery/jquery.min.js"></script>
-		<script
-			src="../adminAssets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-		<!-- Core plugin JavaScript-->
-		<script src="../adminAssets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-		<!-- Custom scripts for all pages-->
-		<script src="../adminAssets/js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="../static/admin/js/sb-admin-2.min.js"></script>
 
-		<!-- Page level plugins -->
-		<script
-			src="../adminAssets/vendor/datatables/jquery.dataTables.min.js"></script>
-		<script
-			src="../adminAssets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="../static/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../static/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-		<!-- Page level custom scripts -->
-		<script src="../adminAssets/js/demo/datatables-demo.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="../static/admin/js/demo/datatables-demo.js"></script>
 </body>
 </html>

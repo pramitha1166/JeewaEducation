@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -282,13 +284,15 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">VISA Payment List</h6>
             </div>
+            <form method="get" action = "paymentvlist">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Student ID</th>
+                      <th>ID</th>
                       <th>Name</th>
+                      <th>Student ID</th>
                       <th>Bank</th>
                       <th>Branch</th>
                       <th>Deposited Amount</th>
@@ -299,8 +303,9 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Student ID</th>
+                    <th>ID</th>
                       <th>Name</th>
+                      <th>Student ID</th>
                       <th>Bank</th>
                       <th>Branch</th>
                       <th>Deposited Amount</th>
@@ -310,14 +315,16 @@
                     </tr>
                   </tfoot>
                   <tbody>
+                  <c:forEach var="PaymentForVISA" items="${paymentvisalist}">
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-					  <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/04/25</td>
+                      <td>${PaymentForVISA.id}</td>
+                      <td>${PaymentForVISA.name}</td>
+                      <td>${PaymentForVISA.studentId}</td>
+                      <td>${PaymentForVISA.depositedAmount}</td>
+                      <td>${PaymentForVISA.bank}</td>
+					  <td>${PaymentForVISA.branch}</td>
+                      <td>${PaymentForVISA.date}</td>
+                      <td>${PaymentForVISA.paymentSlip}</td>
                       <td><a href="#" class="btn btn-danger btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
@@ -325,25 +332,12 @@
                           <span class="text">Delete</span>
                         </a></td>
                     </tr>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-					  <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/04/25</td>
-                      <td><a href="#" class="btn btn-danger btn-icon-split">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-trash"></i>
-                          </span>
-                          <span class="text">Delete</span>
-                        </a></td>
-                    </tr>
+                    </c:forEach>
                   </tbody>
                 </table>
               </div>
             </div>
+            </form>
           </div>
 
         </div>
@@ -393,21 +387,21 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="../adminAssets/vendor/jquery/jquery.min.js"></script>
-  <script src="../adminAssets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="../adminAssets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="../adminAssets/js/sb-admin-2.min.js"></script>
+  <script src="../static/admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="../adminAssets/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="../adminAssets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="../static/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../static/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="../adminAssets/js/demo/datatables-demo.js"></script>
+  <script src="../static/admin/js/demo/datatables-demo.js"></script>
 
 </body>
 </html>

@@ -4,12 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class CompanyExpences {
+public class CompanyIncomes {
 	@Id
 	private int id;
 	private String type;
-	private int amount;
-		
+	private int amount;	
+	
 	public int getId() {
 		return id;
 	}
@@ -36,7 +36,7 @@ public class CompanyExpences {
 
 	@Override
 	public String toString() {
-		return "CompanyExpences [id="+id+", type="+type+",amount="+amount+"]";
+		return "CompanyIncomes [id="+id+", type="+type+",amount="+amount+"]";
 	}
 	
 }
