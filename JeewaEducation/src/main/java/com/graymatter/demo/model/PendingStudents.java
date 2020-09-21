@@ -12,6 +12,7 @@ public class PendingStudents {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int pending_id;
 	
+<<<<<<< HEAD
 	private String nameWithInitials;
 	private String fullName;
 	private String homeAddress;
@@ -19,6 +20,15 @@ public class PendingStudents {
 	private String degreeProgram;
 	private String telHome;
 	private String telMobile;
+=======
+	private String NameWithInitials;
+	private String FullName;
+	private String HomeAddress;
+	private String nic;
+	private String DegreeProgram;
+	private String TelHome;
+	private String TelMobile;
+>>>>>>> branch 'IT19241456' of https://github.com/pramitha1166/JeewaEducation.git
 	
 	private String fatherName;
 	private String fatherNIC;
@@ -51,12 +61,16 @@ public class PendingStudents {
 	public void setHomeAddress(String homeAddress) {
 		this.homeAddress = homeAddress;
 	}
+<<<<<<< HEAD
 	public String getNic() {
 		return nic;
 	}
 	public void setNic(String nic) {
 		this.nic = nic;
 	}
+=======
+
+>>>>>>> branch 'IT19241456' of https://github.com/pramitha1166/JeewaEducation.git
 	public String getDegreeProgram() {
 		return degreeProgram;
 	}
@@ -111,15 +125,29 @@ public class PendingStudents {
 	public void setMotherOccupation(String motherOccupation) {
 		this.motherOccupation = motherOccupation;
 	}
+	public String getNic() {
+		return nic;
+	}
+	public void setNic(String nic) {
+		this.nic = nic;
+	}
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "PendingStudents [pending_id=" + pending_id + ", nameWithInitials=" + nameWithInitials + ", fullName="
 				+ fullName + ", homeAddress=" + homeAddress + ", nic=" + nic + ", degreeProgram=" + degreeProgram
 				+ ", telHome=" + telHome + ", telMobile=" + telMobile + ", fatherName=" + fatherName + ", fatherNIC="
 				+ fatherNIC + ", fatherOccupation=" + fatherOccupation + ", motherName=" + motherName + ", motherNIC="
 				+ motherNIC + ", motherOccupation=" + motherOccupation + "]";
+=======
+		return "PendingStudents [pending_id=" + pending_id + ", NameWithInitials=" + NameWithInitials + ", FullName="
+				+ FullName + ", HomeAddress=" + HomeAddress + ", nic=" + nic + ", DegreeProgram=" + DegreeProgram
+				+ ", TelHome=" + TelHome + ", TelMobile=" + TelMobile + ", FatherName=" + FatherName + ", FatherNIC="
+				+ FatherNIC + ", FatherOccupation=" + FatherOccupation + ", MotherName=" + MotherName + ", MotherNIC="
+				+ MotherNIC + ", MotherOccupation=" + MotherOccupation + "]";
+>>>>>>> branch 'IT19241456' of https://github.com/pramitha1166/JeewaEducation.git
 	}
-	
+
 	
 	
 	

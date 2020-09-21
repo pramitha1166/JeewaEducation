@@ -39,7 +39,11 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner">
+<<<<<<< HEAD
 											<input type="text" class="form-control" id="first-name" name="nameWithInitials"
+=======
+											<input type="text" class="form-control" id="first-name" name="namewithinitials"
+>>>>>>> branch 'IT19241456' of https://github.com/pramitha1166/JeewaEducation.git
 												required>
 											<span class="label">Name With Initials</span>
 											<span class="border"></span>
