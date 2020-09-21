@@ -39,7 +39,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="first-name" name="first-name"
+											<input type="text" class="form-control" id="first-name" name="nameWithInitials"
 												required>
 											<span class="label">Name With Initials</span>
 											<span class="border"></span>
@@ -50,7 +50,7 @@
 									<div class="form-row">
 										<div class="form-holder form-holder-1">
 											<label class="form-row-inner">
-												<input type="text" class="form-control" id="last-name" name="last-name"
+												<input type="text" class="form-control" id="last-name" name="fullName"
 													required>
 												<span class="label">Full Name</span>
 												<span class="border"></span>
@@ -61,7 +61,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="address" name="address"
+											<input type="text" class="form-control" id="address" name="homeAddress"
 												required>
 											<span class="label">Home Address</span>
 											<span class="border"></span>
@@ -72,7 +72,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="code" name="code" required>
+											<input type="text" class="form-control" id="code" name="nic" required>
 											<span class="label">NIC</span>
 											<span class="border"></span>
 										</label>
@@ -82,7 +82,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="phone" name="degreeprogram" required>
+											<input type="text" class="form-control" id="phone" name="degreeProgram" required>
 											<span class="label">Degree Program</span>
 											<span class="border"></span>
 										</label>
@@ -92,7 +92,7 @@
 								<div class="form-row">
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="first-name" name="first-name"
+											<input type="text" class="form-control" id="first-name" name="telHome"
 												required>
 											<span class="label">Tel Home</span>
 											<span class="border"></span>
@@ -100,7 +100,7 @@
 									</div>
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="last-name" name="last-name"
+											<input type="text" class="form-control" id="last-name" name="telMobile"
 												required>
 											<span class="label">Tel Mobile</span>
 											<span class="border"></span>
@@ -129,7 +129,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" name="your_email_1" id="your_email_1"
+											<input type="text" name="fatherName" id="your_email_1"
 												class="form-control" required>
 											<span class="label">Father Name</span>
 											<span class="border"></span>
@@ -139,7 +139,7 @@
 								<div class="form-row">
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="password" name="password_1" id="password_1"
+											<input type="text" name="fatherNIC" id="your_email_1"
 												class="form-control" required>
 											<span class="label">Father NIC</span>
 											<span class="border"></span>
@@ -147,7 +147,7 @@
 									</div>
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="password" name="comfirm_password_1" id="comfirm_password_1"
+											<input type="text" name="fatherOccupation" id="your_email_1"
 												class="form-control" required>
 											<span class="label">Father Occupation</span>
 											<span class="border"></span>
@@ -161,7 +161,7 @@
 								<div class="form-row">
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="password" name="password_1" id="password_1"
+											<input type="text" name="motherName" id="your_email_1"
 												class="form-control" required>
 											<span class="label">Mother Name</span>
 											<span class="border"></span>
@@ -175,7 +175,7 @@
 								<div class="form-row">
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="password" name="password_1" id="password_1"
+											<input type="text" name="motherNIC" id="your_email_1"
 												class="form-control" required>
 											<span class="label">Mother NIC</span>
 											<span class="border"></span>
@@ -183,7 +183,7 @@
 									</div>
 									<div class="form-holder">
 										<label class="form-row-inner">
-											<input type="password" name="comfirm_password_1" id="comfirm_password_1"
+											<input type="text" name="motherOccupation" id="your_email_1"
 												class="form-control" required>
 											<span class="label">Father Occupation</span>
 											<span class="border"></span>

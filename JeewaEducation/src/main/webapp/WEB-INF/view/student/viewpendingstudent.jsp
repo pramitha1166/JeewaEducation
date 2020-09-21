@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,23 +49,23 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="Dashboard.html">
+                <a class="nav-link" href="/admin/student-dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pendingStudents.html">
+                <a class="nav-link" href="/pending-stud">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Pending Students</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="FoundationStudents.html">
+                <a class="nav-link" href="/admin/foundation-stud">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Foundation Students</span></a>
             </li>
             <!--
             <li class="nav-item">
-                <a class="nav-link" href="admin_payment_income_list.html">
+                <a class="nav-link" href="/view-pending-stud">
                     <i class="fas fa-dollar-sign"></i>
                     <span>Income</span></a>
             </li>
@@ -308,13 +310,14 @@
                     <br>
                     <h3>Personal Details</h3>
                     <br>
-
+					
+					
                     <form class="was-validated">
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationTooltip01">Name with Initials</label>
-                                <input type="text" class="form-control" id="pending_Stu_name_initials"
-                                    placeholder="Name with Initials" readonly="readonly" required>
+                                <input type="text" class="form-control" id="pending_Stu_name_initials" value="${nameWithInitials }"
+                                    placeholder="C.Herath" readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please enter your name with initials.
                                 </div>
@@ -325,7 +328,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="validationTooltip02">Full name</label>
                                 <input type="text" class="form-control" id="pending_stu_fullName"
-                                    placeholder="Full name" readonly="readonly" required>
+                                    placeholder="Charuka Herath" readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please enter your full name.
                                 </div>
@@ -344,7 +347,7 @@
                                         <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                                     </div>
                                     <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                        class="form-control" id="pending_stu_email" placeholder="Email"
+                                        class="form-control" id="pending_stu_email" placeholder="charuka@gmail.com"
                                         aria-describedby="validationTooltipUsernamePrepend" readonly="readonly"
                                         required>
                                     <div class="invalid-tooltip">
@@ -358,7 +361,7 @@
 
                             <div class="col-md-6 mb-3 mt-4">
                                 <label for="validationTooltip02">Address</label>
-                                <input type="text" class="form-control" id="pending_stu_address" placeholder="Address"
+                                <input type="text" class="form-control" id="pending_stu_address" placeholder="Kandy"
                                     readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please enter Address.
@@ -373,7 +376,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3 mt-4">
                                 <label for="validationTooltip03">School</label>
-                                <input type="text" class="form-control" id="pending_stu_school" placeholder="School"
+                                <input type="text" class="form-control" id="pending_stu_school" placeholder="Trinity College"
                                     readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please provide a valid school.
@@ -384,7 +387,7 @@
                             </div>
                             <div class="col-md-3 mb-3 mt-4">
                                 <label for="validationTooltip04">Tel-Home</label>
-                                <input type="text" class="form-control" id="pending_stu_tel_home" placeholder="Tel-Home"
+                                <input type="text" class="form-control" id="pending_stu_tel_home" placeholder="081-7890987"
                                     readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please provide Home Telephone No.
@@ -396,7 +399,7 @@
                             <div class="col-md-3 mb-3 mt-4">
                                 <label for="validationTooltip05">Tel-Mobile</label>
                                 <input type="text" class="form-control" id="pending_stu_tel_mobile"
-                                    placeholder="Tel-Mobile" readonly="readonly" required>
+                                    placeholder="076-6708754" readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please provide a valid zip.
                                 </div>
@@ -406,7 +409,7 @@
                             </div>
                             <div class="col-md-3 mb-3 mt-4">
                                 <label for="validationTooltip05">NIC</label>
-                                <input type="text" class="form-control" id="pending_stu_nic" placeholder="NIC"
+                                <input type="text" class="form-control" id="pending_stu_nic" placeholder="981712978V"
                                     readonly="readonly" required>
                                 <div class="invalid-tooltip">
                                     Please provide a valid NIC.
@@ -425,7 +428,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="validationTooltip01">Father Name</label>
                                     <input type="text" class="form-control" id="fou_Stu_father_name"
-                                        placeholder="father name" readonly="readonly" required>
+                                        placeholder="anura" readonly="readonly" required>
                                     <div class="invalid-tooltip">
                                         Please enter your father name.
                                     </div>
@@ -435,7 +438,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationTooltip02">Father NIC</label>
-                                    <input type="text" class="form-control" id="fou_stu_father_nic" placeholder="NIC"
+                                    <input type="text" class="form-control" id="fou_stu_father_nic" placeholder="678909875V"
                                         readonly="readonly" required>
                                     <div class="invalid-tooltip">
                                         Please enter your full name.
@@ -447,7 +450,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="validationTooltip02">Father Occupation</label>
                                     <input type="text" class="form-control" id="fou_stu_father_occu"
-                                        placeholder="Occupation" readonly="readonly" required>
+                                        placeholder="Manager" readonly="readonly" required>
                                     <div class="invalid-tooltip">
                                         Please enter occupation.
                                     </div>
@@ -466,7 +469,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="validationTooltip01">Mother Name</label>
                                     <input type="text" class="form-control" id="fou_Stu_mother_name"
-                                        placeholder="mother name" readonly="readonly" required>
+                                        placeholder="Kumari" readonly="readonly" required>
                                     <div class="invalid-tooltip">
                                         Please enter your mother name.
                                     </div>
@@ -476,7 +479,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationTooltip02">Mother NIC</label>
-                                    <input type="text" class="form-control" id="fou_stu_mother_nic" placeholder="NIC"
+                                    <input type="text" class="form-control" id="fou_stu_mother_nic" placeholder="987867564"
                                         readonly="readonly" required>
                                     <div class="invalid-tooltip">
                                         Please enter your full name.
@@ -488,7 +491,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="validationTooltip02">Mother Occupation</label>
                                     <input type="text" class="form-control" id="fou_stu_mother_occu"
-                                        placeholder="Occupation" readonly="readonly" required>
+                                        placeholder="Teacher" readonly="readonly" required>
                                     <div class="invalid-tooltip">
                                         Please enter occupation.
                                     </div>
@@ -498,13 +501,30 @@
                                 </div>
 
                             </div>
+                            
+                            <button class="btn btn-primary mt-4" type="submit" id="pending_stu_view_btn_text"
+                            onclick="viewPendingStudentUpdate_btn()">Update</button>
+                        <button class="btn btn-secondary mt-4" type="submit" id="pending_stu_cancel_edit"
+                            hidden>Cancel</button>
+                            
+                            
+                        </form>
+                        <div>
+                         <button class="btn btn-primary mt-4" type="submit" id="pending_stu_view_btn_text"
+                            onclick="viewPendingStudentUpdate_btn()">Send To Foundation Batch</button>
+                        </div>
+                        
+                        <div>
+                         <button class="btn btn-primary mt-4" type="submit" id="pending_stu_view_btn_text"
+                            onclick="viewPendingStudentUpdate_btn()">Send To Visa Process</button>
+                        </div>
                         </form>
                         <br>
                         <br>
                         <br>
 
 
-
+<!--  
                         <form class="was-validated">
                             <h3>Education Qualification</h3><br>
                             <h5>O/L Results</h5><br>
@@ -640,9 +660,11 @@
 
                         <button class="btn btn-primary mt-5" type="submit" id="pendingstu_sendto_visa"
                             onclick="viewPendingStudentUpdate_btn()">Sent To visa</button>
-                    </form>
+                            
+                            -->
+                    
 
-
+ 
 
 
 
@@ -706,6 +728,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../static/admin/js/sb-admin-2.min.js"></script>
+  
+  <script src="../static/admin/js/view.js"></script>
     
 
 

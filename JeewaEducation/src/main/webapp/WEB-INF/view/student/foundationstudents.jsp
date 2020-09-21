@@ -323,10 +323,11 @@
                                             <th>School</th>
                                             <th>NIC</th>
                                             <th>Tel Home</th>
-                                            <th>Edit</th>
+                                            <th>View</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
+                                    <!--  
                                     <tfoot>
                                         <tr>
                                             <th>Name With Initials</th>
@@ -340,6 +341,7 @@
                                             <th>Delete</th>
                                         </tr>
                                     </tfoot>
+                                    -->
                                     <tbody>
                                         <tr>
                                             <td>T.B.Perera</td>
@@ -348,7 +350,7 @@
                                             <td>Trinity College</td>
                                             <td>981712978V</td>
                                             <td>081-5678456</td>
-                                            <td> <a href="#" class="btn btn-info btn-icon-split">
+                                            <td> <a href="/admin/view-foundation-stud" class="btn btn-info btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa fa-eye"></i>
                                                     </span>
@@ -363,6 +365,7 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                             <td>Garrett Winters</td>
                                             <td>Accountant</td>
@@ -517,6 +520,7 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

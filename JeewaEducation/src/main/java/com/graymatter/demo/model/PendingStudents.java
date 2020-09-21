@@ -12,21 +12,21 @@ public class PendingStudents {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int pending_id;
 	
-	private String NameWithInitials;
-	private String FullName;
-	private String HomeAddress;
-	private String NIC;
-	private String DegreeProgram;
-	private String TelHome;
-	private String TelMobile;
+	private String nameWithInitials;
+	private String fullName;
+	private String homeAddress;
+	private String nic;
+	private String degreeProgram;
+	private String telHome;
+	private String telMobile;
 	
-	private String FatherName;
-	private String FatherNIC;
-	private String FatherOccupation;
+	private String fatherName;
+	private String fatherNIC;
+	private String fatherOccupation;
 	
-	private String MotherName;
-	private String MotherNIC;
-	private String MotherOccupation;
+	private String motherName;
+	private String motherNIC;
+	private String motherOccupation;
 	public int getPending_id() {
 		return pending_id;
 	}
@@ -34,94 +34,93 @@ public class PendingStudents {
 		this.pending_id = pending_id;
 	}
 	public String getNameWithInitials() {
-		return NameWithInitials;
+		return nameWithInitials;
 	}
 	public void setNameWithInitials(String nameWithInitials) {
-		NameWithInitials = nameWithInitials;
+		this.nameWithInitials = nameWithInitials;
 	}
 	public String getFullName() {
-		return FullName;
+		return fullName;
 	}
 	public void setFullName(String fullName) {
-		FullName = fullName;
+		this.fullName = fullName;
 	}
 	public String getHomeAddress() {
-		return HomeAddress;
+		return homeAddress;
 	}
 	public void setHomeAddress(String homeAddress) {
-		HomeAddress = homeAddress;
+		this.homeAddress = homeAddress;
 	}
-	public String getNIC() {
-		return NIC;
+	public String getNic() {
+		return nic;
 	}
-	public void setNIC(String nIC) {
-		NIC = nIC;
+	public void setNic(String nic) {
+		this.nic = nic;
 	}
 	public String getDegreeProgram() {
-		return DegreeProgram;
+		return degreeProgram;
 	}
 	public void setDegreeProgram(String degreeProgram) {
-		DegreeProgram = degreeProgram;
+		this.degreeProgram = degreeProgram;
 	}
 	public String getTelHome() {
-		return TelHome;
+		return telHome;
 	}
 	public void setTelHome(String telHome) {
-		TelHome = telHome;
+		this.telHome = telHome;
 	}
 	public String getTelMobile() {
-		return TelMobile;
+		return telMobile;
 	}
 	public void setTelMobile(String telMobile) {
-		TelMobile = telMobile;
+		this.telMobile = telMobile;
 	}
 	public String getFatherName() {
-		return FatherName;
+		return fatherName;
 	}
 	public void setFatherName(String fatherName) {
-		FatherName = fatherName;
+		this.fatherName = fatherName;
 	}
 	public String getFatherNIC() {
-		return FatherNIC;
+		return fatherNIC;
 	}
 	public void setFatherNIC(String fatherNIC) {
-		FatherNIC = fatherNIC;
+		this.fatherNIC = fatherNIC;
 	}
 	public String getFatherOccupation() {
-		return FatherOccupation;
+		return fatherOccupation;
 	}
 	public void setFatherOccupation(String fatherOccupation) {
-		FatherOccupation = fatherOccupation;
+		this.fatherOccupation = fatherOccupation;
 	}
 	public String getMotherName() {
-		return MotherName;
+		return motherName;
 	}
 	public void setMotherName(String motherName) {
-		MotherName = motherName;
+		this.motherName = motherName;
 	}
 	public String getMotherNIC() {
-		return MotherNIC;
+		return motherNIC;
 	}
 	public void setMotherNIC(String motherNIC) {
-		MotherNIC = motherNIC;
+		this.motherNIC = motherNIC;
 	}
 	public String getMotherOccupation() {
-		return MotherOccupation;
+		return motherOccupation;
 	}
 	public void setMotherOccupation(String motherOccupation) {
-		MotherOccupation = motherOccupation;
+		this.motherOccupation = motherOccupation;
 	}
 	@Override
 	public String toString() {
-		return "PendingStudents [pending_id=" + pending_id + ", NameWithInitials=" + NameWithInitials + ", FullName="
-				+ FullName + ", HomeAddress=" + HomeAddress + ", NIC=" + NIC + ", DegreeProgram=" + DegreeProgram
-				+ ", TelHome=" + TelHome + ", TelMobile=" + TelMobile + ", FatherName=" + FatherName + ", FatherNIC="
-				+ FatherNIC + ", FatherOccupation=" + FatherOccupation + ", MotherName=" + MotherName + ", MotherNIC="
-				+ MotherNIC + ", MotherOccupation=" + MotherOccupation + "]";
+		return "PendingStudents [pending_id=" + pending_id + ", nameWithInitials=" + nameWithInitials + ", fullName="
+				+ fullName + ", homeAddress=" + homeAddress + ", nic=" + nic + ", degreeProgram=" + degreeProgram
+				+ ", telHome=" + telHome + ", telMobile=" + telMobile + ", fatherName=" + fatherName + ", fatherNIC="
+				+ fatherNIC + ", fatherOccupation=" + fatherOccupation + ", motherName=" + motherName + ", motherNIC="
+				+ motherNIC + ", motherOccupation=" + motherOccupation + "]";
 	}
 	
 	
-
 	
 	
 

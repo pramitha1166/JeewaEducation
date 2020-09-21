@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -312,6 +313,8 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Pending Students</h6>
                         </div>
+                        
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable-charu1" width="100%" cellspacing="0">
@@ -320,34 +323,49 @@
                                             <th>Name With Initials</th>
                                             <th>Full Name</th>
                                             <th>Address</th>
-                                            <th>School</th>
+                                            <th>Degree</th>
                                             <th>NIC</th>
                                             <th>Tel Home</th>
-                                            <th>Edit</th>
+                                            <th>View</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name With Initials</th>
-                                            <th>Full Name</th>
-                                            <th>Email</th>
-                                            <th>Address</th>
-                                            <th>School</th>
-                                            <th>NIC</th>
-
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </tfoot>
+                                   
                                     <tbody>
-                                        <tr>
-                                            <td>T.B.Perera</td>
-                                            <td>Thisara Bandara Perera</td>
-                                            <td>1/86,Peradeniya,Kandy</td>
-                                            <td>Trinity College</td>
-                                            <td>981712978V</td>
-                                            <td>081-5678456</td>
+                                    <c:forEach var="pstud" items="${listProducts }">
+                                    <tr>
+                                    	<td>${pstud.nameWithInitials }</td>
+                                    	<td>${pstud.fullName }</td>
+                                    	<td>${pstud.homeAddress }</td>
+                                    	<td>${pstud.degreeProgram }</td>
+                                    	<td>${pstud.nic }</td>
+                                    	<td>${pstud.telHome }</td>
+                                    	<td> <a href="/view-pending-stud" class="btn btn-info btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa fa-eye"></i>
+                                                    </span>
+                                                    <span class="text">View</span>
+                                                </a>
+                                            </td>
+                                            <td> <a href="/pending_delete" class="btn btn-danger btn-icon-split" id="${pstud.pending_id }">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Delete</span>
+                                                </a>
+                                            </td>
+                                    </tr>
+                                    
+                                    
+                                    </c:forEach>
+                                    
+                                        <!-- <tr th:each="pending_students : ${listProducts}">
+                                            <td th:text="${pending_students.nameWithInitials}"></td>
+                                            <td th:text="${pending_students.fullName}"></td>
+                                            <td th:text="${pending_students.homeAddress}"></td>
+                                            <td th:text="${pending_students.degreeProgram}"></td>
+                                            <td th:text="${pending_students.nic}"></td>
+                                            <td th:text="${pending_students.telHome}"></td>
                                             <td> <a href="#" class="btn btn-info btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa fa-eye"></i>
@@ -362,7 +380,10 @@
                                                     <span class="text">Delete</span>
                                                 </a>
                                             </td>
-                                        </tr>
+                                        </tr> -->
+                                        </#list>
+                                        
+                                        <!-- 
                                         <tr>
                                             <td>Garrett Winters</td>
                                             <td>Accountant</td>
@@ -517,10 +538,13 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                        -->
                                     </tbody>
+                                    
                                 </table>
                             </div>
                         </div>
+                       
                     </div>
 
                 </div>

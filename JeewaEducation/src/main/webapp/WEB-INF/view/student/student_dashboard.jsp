@@ -48,17 +48,17 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="Dashboard.html">
+                <a class="nav-link" href="/admin/student-dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pendingStudents.html">
+                <a class="nav-link" href="/pending-stud">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Pending Students</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="FoundationStudents.html">
+                <a class="nav-link" href="/admin/foundation-stud">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Foundation Students</span></a>
             </li>
@@ -314,7 +314,7 @@
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
-                                <a href="pendingStudents.html">
+                                <a href="/pending-stud">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
@@ -333,7 +333,7 @@
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
-                                <a href="FoundationStudents.html">
+                                <a href="/admin/foundation-stud">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
@@ -348,6 +348,54 @@
                                 </a>
                             </div>
                         </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <a href="/admin/student_report">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Student Reports</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                                                <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <a href="/student-feedback">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Student Feedbacks</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
 
 
 

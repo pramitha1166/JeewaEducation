@@ -75,6 +75,13 @@
                     </div>
                 </div>
             </li>
+            
+            
+             <li class="nav-item">
+                <a class="nav-link" href="/contact_admin">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Contact Admin</span></a>
+            </li>
 
 
 

@@ -41,7 +41,7 @@
                             aria-hidden="true"></i>info@yourmail.com</a>
                 </div>
                 <nav class="d-flex aic">
-                    <a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                    <a href="/student_profile" class="login"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
                     <ul class="nav social d-none d-md-flex">
                         <li><a href="https://www.facebook.com/fh5co" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -66,7 +66,7 @@
                         <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/student-register">Apply Now</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
                     </ul>
                     <form class="bg-white search-form" method="get" id="searchform">
@@ -92,7 +92,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide slide-content d-flex align-items-center">
                                 <div class="single-slide">
-                                    <h1 data-aos="fade-right" data-aos-delay="200">Creative<br> Multipurpose websites
+                                    <h1 data-aos="fade-right" data-aos-delay="200">Jeewa<br>Higher Education
                                     </h1>
                                     <p data-aos="fade-right" data-aos-delay="600">Crafted by innovative creators for
                                         Expecting

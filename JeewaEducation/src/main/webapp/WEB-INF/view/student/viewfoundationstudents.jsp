@@ -46,17 +46,17 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="Dashboard.html">
+                <a class="nav-link" href="/admin/student-dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pendingStudents.html">
+                <a class="nav-link" href="/pending-stud">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Pending Students</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="FoundationStudents.html">
+                <a class="nav-link" href="/admin/foundation-stud">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Foundation Students</span></a>
             </li>
