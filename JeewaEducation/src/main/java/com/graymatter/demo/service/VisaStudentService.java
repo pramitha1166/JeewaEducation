@@ -25,4 +25,9 @@ public class VisaStudentService {
 	public VisaStudent findByUserName(String username) {
 		return repo.findByIdByUsername(username);
 	}
+	
+	public VisaStudent findByUser(String username) {
+		return repo.findByUsername(username);
+	}
+	
 }

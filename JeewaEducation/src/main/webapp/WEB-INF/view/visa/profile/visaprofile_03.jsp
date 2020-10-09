@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <head>
 
   <meta charset="utf-8">
@@ -22,7 +22,6 @@
 
   <!-- Custom styles for this page -->
   <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -240,7 +239,11 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>
+                </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -258,7 +261,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/profile/visa/logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -311,17 +314,15 @@
 
         </div>        
 
-   <script src="../../static/admin/js/admin_profile_image_btn.js"></script>
-
-  <!-- Bootstrap core JavaScript-->
-		  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
-  		<script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
- 		 <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  		<script src="../../static/admin/js/sb-admin-2.min.js"></script>
+  <script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
     </body>
 </html>

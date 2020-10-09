@@ -1,12 +1,20 @@
 <!-- IT19056326 S.P.P.P.Wanigarathne -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	//if(session.getAttribute("visauserid")==null){
+    		//response.sendRedirect("/profile/visa");
+    	//}
+    
+    %>
+    
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <head>
 
   <meta charset="utf-8">
@@ -15,32 +23,33 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Pending VISA</title>
+  <title>Employee Admin - Admin Profile</title>
 
-  <link href="../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+ <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
-  <link href="../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">VISA Administrator</div>
+        <div class="sidebar-brand-text mx-3">JeewaEducation</div>
       </a>
 
       <!-- Divider -->
@@ -48,29 +57,30 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/admin/visa-dashboard">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>My VISA Section</span></a>
       </li>
 
-      <li class="nav-item ">
-        <a class="nav-link" href="/admin/visa-pendingstudents">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Visa Acceptable Students</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/admin/visa-pendinglist">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Students's VISA Applications</span></a>
+          <span>Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Students's VISA Documents</span></a>
+          <span>About</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Contact Us</span></a>
       </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+     
+
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -78,8 +88,6 @@
       </div>
 
     </ul>
-
-
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -87,9 +95,9 @@
 
       <!-- Main Content -->
       <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+ 
+         <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <form class="form-inline">
@@ -103,7 +111,7 @@
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-danger" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -243,7 +251,11 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>
+                </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -261,7 +273,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/profile/visa/logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -270,164 +282,91 @@
 
           </ul>
 
-        </nav>
-        <!-- End of Topbar -->
+         </nav>
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+                    <!-- Main page content-->
+         <div class="container mt-4">
+                  <!-- Page Heading -->
+                        
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Pending VISA</h1>
-         
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">VISA pending student list</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Visa ID</th>
-                      <th>Student Name</th>
-                      <th>Country</th>
-                      <th>Date Of Birth</th>
-                      <th>Email</th>
-                      <th>Gender</th>
-                      <th>State</th>
-                      <th>City</th>
-                      <th>Student ID</th>
-                      <th>Status</th>
-                      <th></th>
-                        <th></th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                        <th>Visa ID</th>
-                        <th>Student Name</th>
-                        <th>Country</th>
-                        <th>Date Of Birth</th>
-                        <th>Email</th>
-                        <th>Gender</th>
-                        <th>State</th>
-                        <th>City</th>
-                        <th>Student ID</th>
-                        <th>Status</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                	<c:forEach var="pendingforvisa" items="${pendingvisa}">
-                    <tr>
-                        <td>${pendingforvisa.id}</td>
-                        <td>${pendingforvisa.fname}</td>
-                        <td>${pendingforvisa.country}</td>
-                        <td>${pendingforvisa.dob}</td>
-                        <td>${pendingforvisa.email}</td>
-                        <td>${pendingforvisa.gender}</td>
-                        <td>${pendingforvisa.state}</td>
-                        <td>${pendingforvisa.city}</td>                     
-                        <td>${pendingforvisa.studentid}</td>                
-                        <td>${pendingforvisa.status}</td>                  
-                        <td><a href="VisaApplication/${pendingforvisa.id}" class="btn btn-info btn-icon-split">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-info-circle"></i>
-                          </span>
-                          <span class="text">View</span>
-                        </a></td>
-                        <td><a onclick="getDelete();" href="deleteVisaApplication?id=${pendingforvisa.id}" class="btn btn-danger btn-icon-split" >
-                          <span class="icon text-white-50">
-                            <i class="fas fa-trash"></i>
-                          </span>
-                          <span class="text">Delete</span>
-                        </a></td>
-                      </tr>
-                     </c:forEach>
-                   
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<script>
-
-	function getDelete() {
-
-		var retVal = confirm("Do You Want to Dlete This Record?");
-		if(retVal==true) {
-			return true;
-			} 
-		else {
-			return false;	
-			} 
-		
-		}
-
-
+	          <p class="h4">Hello 
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>, 
+			</p>
+			
+			<security:authorize access="isAuthenticated()">
+				<form action="/profile/visa/accessvisa">
+				  <input  type="hidden" value="<c:out value="${pageContext.request.remoteUser}"/>" name="username">
+				  <input type="submit" class="btn btn-primary mb-2" value="Access For VISA Process">
+				</form>
+			  </security:authorize>
+			  	
+	          <div class="row">
 	
-</script>	
+	
+	
+	            <div class="col-xl-3 col-md-6 mb-4">
+	
+	            </div>
+	
+	            <div class="col-xl-3 col-md-6 mb-4">
+	              <div class="card border-left-success shadow h-100 py-2">
+	                <div class="card-body">
+	                  <div class="row no-gutters align-items-center">
+	                    <div class="col mr-2">
+	                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Pending Students</div>
+	                      <div class="h5 mb-0 font-weight-bold text-gray-800">200</div>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	
+	            <div class="col-xl-3 col-md-6 mb-4">
+	              <div class="card border-left-info shadow h-100 py-2">
+	                <div class="card-body">
+	                  <div class="row no-gutters align-items-center">
+	                    <div class="col mr-2">
+	                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total VISA verified Students</div>
+	                      <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+	                    </div>
+	                    <div class="col-auto">
+	                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	
+	          </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="../static/admin/vendor/jquery/jquery.min.js"></script>
-  <script src="../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          </div>
+                
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+           </div>
+
+
+        </div>        
+
+        <!-- Bootstrap core JavaScript-->
+  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="../static/admin/js/sb-admin-2.min.js"></script>
+  <script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
-</body>
-
+    </body>
 </html>

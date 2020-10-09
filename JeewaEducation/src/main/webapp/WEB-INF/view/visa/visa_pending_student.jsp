@@ -57,12 +57,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin/visa-pendinglist">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pending VISA for Verification</span></a>
+          <span>Students's VISA Applications</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Verfied VISA</span></a>
+          <span>Students' VISA Documents</span></a>
       </li>
 
       <!-- Divider -->

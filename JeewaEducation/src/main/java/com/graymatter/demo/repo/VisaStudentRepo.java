@@ -15,4 +15,6 @@ public interface VisaStudentRepo extends JpaRepository<VisaStudent, Integer> {
 	@Query("select id from VisaStudent where username=?1")
 	VisaStudent findByIdByUsername(String username);
 	
+	VisaStudent findByUsername(String username);
+	
 }

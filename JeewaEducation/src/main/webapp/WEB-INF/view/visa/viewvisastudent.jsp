@@ -18,14 +18,14 @@
   <title>VISA pending students</title>
 
  
-  <link href="../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
-  <link href="../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -64,12 +64,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin/visa-pendinglist">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pending VISA for Verification</span></a>
+          <span>Students' VISA Applications</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Verfied VISA</span></a>
+          <span>Students' VISA Documents</span></a>
       </li>
 
       <!-- Divider -->
@@ -282,16 +282,25 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Update VISA Application Form Details</h1>
          
-          <form:form  modelAttribute="pendingforvisa" class="wasvalidated" method="post" action="updatevisa">
+          <form:form  modelAttribute="pendingforvisa" class="wasvalidated" method="post" action="${penvisa.id}">
 
             <div class="form-row">
                 <div class="col-md-3 mb-3">
-                    <label for="validationTooltipUsername">Student ID</label>
+                    <label for="validationTooltipUsername">VISA ID</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                       </div>
                       <form:input path="id" name="id" type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>                     
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationTooltipUsername">Student ID</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                      </div>
+                      <form:input path="studentid" name="studentid" type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>                     
                     </div>
                   </div>
             </div>
@@ -340,10 +349,9 @@
                     <div class="input-group">
 
                         <form:select path="gender" class="custom-select" id="gender" name="gender" >
-                            <option >Select the gender</option>
+                            <option value="${pendingvisa.gender}">${pendingvisa.gender}</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
-                            <option value="Other">Other</option>
                           </form:select>
                     </div>
                       <div class="has-error">
@@ -393,7 +401,7 @@
                     <div class="input-group">
 
                         <form:select class="custom-select" id="marrage" name="marrage"  path="marrage">
-                            <option ></option>
+                            <option value="${pendingvisa.marrage}">${pendingvisa.marrage}</option>
                             <option value="Married">Married</option>
                             <option value="Engaged">Engaged</option>
                             <option value="Not-Married">Not-Married</option>
@@ -403,7 +411,7 @@
                   	<form:errors path="marrage" class="help-inline" style="color:red;" />
                   </div>
                   </div>
-                </div> 
+                 
 
                   <div class="col-md-6 mb-2 mt-3">
                     <label for="validationTooltip01">Country Of Current Residence</label>
@@ -412,6 +420,24 @@
                   	<form:errors path="country" class="help-inline" style="color:red;" />
                   </div>
             	</div>
+            </div>
+			
+			<div class="form-row">
+				  <div class="col-md-6 mb-2 mt-3">
+                    <label for="validationTooltipUsername">Change Status</label>
+                    <div class="input-group">
+
+                        <form:select class="custom-select" id="status" name="status"  path="status">
+                            <option value="${pendingvisa.status}">${pendingvisa.status}</option>
+                            <option value="verified">verified</option>
+                            <option value="not-verified">not-verified</option>
+                          </form:select>
+                    </div>
+                      <div class="has-error">
+                  	<form:errors path="marrage" class="help-inline" style="color:red;" />
+                  </div>
+                  </div>
+			</div>
 			
 			<input onclick="getUpdate();" type="submit" class="btn btn-primary mt-4" value="Update">
             <button class="btn btn-secondary mt-4 ml-4" type="submit" id="cancel">Cancel</button>
@@ -480,7 +506,7 @@
 
 </script>	
   
-  <script>
+  <!--script>
 
   function editText() {
 	    document.getElementById('firstname').removeAttribute('readonly');
@@ -498,19 +524,19 @@
 	    document.getElementById('cancel').removeAttribute('hidden');
 	}
 
-  </script>
+  </script-->
   
   <!-- Bootstrap core JavaScript-->
-  <script src="../static/admin/vendor/jquery/jquery.min.js"></script>
-  <script src="../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="../static/admin/js/sb-admin-2.min.js"></script>
+  <script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
-<script src="../static/admin/js/view.js"></script>
+<script src="../../static/admin/js/view.js"></script>
 
 </body>
 

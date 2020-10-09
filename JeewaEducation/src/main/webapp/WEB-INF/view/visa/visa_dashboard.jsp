@@ -61,14 +61,14 @@
           <span>Visa Acceptable Students</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/visa-pendinglist">
+        <a class="nav-link" href="/admin/applications">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pending VISA for Verification</span></a>
+          <span>Students' VISA Applications</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Verfied VISA</span></a>
+          <span>Students' VISA Documents</span></a>
       </li>
 
 

@@ -36,7 +36,11 @@
 
 <!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf -->
 
-
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-taglibs</artifactId>
+   
+</dependency>
 	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -53,6 +57,12 @@
     <artifactId>spring-boot-starter-validation</artifactId>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+    <version>2.3.1.RELEASE</version>
+</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>

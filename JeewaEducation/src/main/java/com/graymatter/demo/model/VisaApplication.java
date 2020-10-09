@@ -16,12 +16,16 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.sun.istack.NotNull;
 
+import net.bytebuddy.implementation.bind.annotation.Default;
+
 @Entity
-public class PendingForVisa {
+public class VisaApplication {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,7 +40,6 @@ public class PendingForVisa {
 	@Size(min = 3, max = 30)
 	private String lname;
 
-	@NotEmpty
 	@Size(min = 3, max = 30)
 	private String other;
 	
@@ -70,7 +73,16 @@ public class PendingForVisa {
 	@NotEmpty
 	@Size(min = 3,max = 30)
 	private String country;
+	
+	@Value("not-verified")
+	private String status;
+	
+	@Column(unique = true)
+	private String studentid;
+	
 /*	
+ * 
+ * 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="visastidfk", nullable = false)
 	private VisaStudent visastudent;
@@ -81,7 +93,50 @@ public class PendingForVisa {
 	private VisaStudent visasastudent; 
 	as
 	*/
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usernamefk", referencedColumnName = "id")
+	private VisaStudent visastudent;
 	
+	
+
+
+
+	public String getStudentid() {
+		return studentid;
+	}
+
+
+
+	public void setStudentid(String studentid) {
+		this.studentid = studentid;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	public VisaStudent getVisastudent() {
+		return visastudent;
+	}
+
+
+
+	public void setVisastudent(VisaStudent visastudent) {
+		this.visastudent = visastudent;
+	}
+
+
+
 	public String getLname() {
 		return lname;
 	}
@@ -194,7 +249,8 @@ public class PendingForVisa {
 	public String toString() {
 		return "PendingForVisa [id=" + id + ", fname=" + fname + ", lname=" + lname + ", other=" + other + ", email="
 				+ email + ", gender=" + gender + ", dob=" + dob + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", marrage=" + marrage + ", country=" + country + "]";
+				+ ", marrage=" + marrage + ", country=" + country + ", status=" + status + ", studentid=" + studentid
+				+ ", visastudent=" + visastudent + "]";
 	}
 
 

@@ -17,6 +17,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
@@ -29,19 +30,23 @@
 
   <title>Employee Admin - Admin Profile</title>
 
-  <!-- Custom fonts for this template -->
   <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  
+  
+  <!-- css for toast massage -->
+  <link href="../../static/admin/css/visatoast.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
   <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
+
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -254,9 +259,13 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
+             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>
+                </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -274,7 +283,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/profile/visa/logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -284,7 +293,6 @@
           </ul>
 
          </nav>
-<c:out value="${sessionScope.visauserid}" />
 
                 
         <!-- Begin Page Content -->
@@ -292,15 +300,15 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Submit VISA Application Form Details</h1>
+            
+            <h2 class="h2 mb-2 text-gray-800">Hello ${visastd.firstname} ${visastd.lastname}. Now you can submit your VISA.</h2>
            
-            <form:form class="wasvalidated" modelAttribute="pendingforvisa" action="pendingvisa" method="post">
-  
-        
+            <form:form class="wasvalidated" modelAttribute="application" action="SubmitAplication" method="post">
   
               <div class="form-row">
                 <div class="col-md-4 mb-3">
                   <label for="validationTooltip01">First name</label>
-                  <form:input type="text" path="fname" class="form-control" id="firstname" name="fname"  placeholder="First name" aria-describedby="validationTooltipUsernamePrepend"/>
+                  <form:input type="text" value="${visastd.firstname}" path="fname" class="form-control text-info" id="firstname" name="fname"  aria-describedby="validationTooltipUsernamePrepend"/>
                   
                   <div class="has-error">
                   	<form:errors path="fname" class="help-inline" style="color:red;" />
@@ -310,7 +318,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="validationTooltip02">Last name</label>
-                  <form:input path="lname" type="text" class="form-control" id="lastname"   name="lname" placeholder="Last name" />
+                  <form:input path="lname" value="${visastd.lastname}" type="text" class="form-control text-info" id="lastname"   name="lname"  />
                   
                   <div class="has-error">
                   	<form:errors path="lname" class="help-inline" style="color:red;" />
@@ -319,7 +327,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="validationTooltip02">Other name</label>
-                  <form:input path="other" type="text" class="form-control" id="other_name" name="other" placeholder="Last name"  />
+                  <form:input path="other" type="text" class="form-control text-info" id="other_name" name="other"   />
                   
                   <div class="has-error">
                   	<form:errors path="other" class="help-inline" style="color:red;" />
@@ -332,7 +340,7 @@
                   <div class="col-md-6 mb-3 mt-3">
                       <label for="validationTooltipUsername">Personal Email for VISA Process</label>
                     
-                        <form:input path="email" type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"  placeholder="student@gmail.com" aria-describedby="validationTooltipUsernamePrepend" />
+                        <form:input value="${visastd.email}" path="email" type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control text-info"   aria-describedby="validationTooltipUsernamePrepend" />
                         
 		                  <div class="has-error">
 		                  	<form:errors path="email" class="help-inline" style="color:red;" />
@@ -347,8 +355,8 @@
                       <label for="validationTooltipUsername">Gender</label>
                       <div class="input-group">
   
-                          <form:select path="gender" class="custom-select" id="sex" name="gender" >
-                              <option value="">Select the Gender</option>
+                          <form:select path="gender" class="custom-select text-info" id="sex" name="gender" >
+                              <option value="${visastd.sex}" selected>${visastd.sex}</option>
                               <option value="Male" >Male</option>
                               <option value="Female">Female</option>
                               <option value="Other">Other</option>
@@ -364,13 +372,11 @@
                     <div class="col-md-6 mb-3 mt-3">
                       <label for="validationTooltipUsername">Select Date Of Birth</label>
                       <div class="input-group">
-                        <form:input path="dob" type="date" class="form-control" name="dob" id="dob" aria-describedby="validationTooltipUsernamePrepend" />
-                        
-                
+                        <form:input path="dob" value="" type="date" class="form-control text-info" name="dob" id="dob" aria-describedby="validationTooltipUsernamePrepend" />                              
                       </div>
                         <div class="has-error">
-                  	<form:errors path="dob" class="help-inline" style="color:red;" />
-                  </div>
+                  			<form:errors path="dob" class="help-inline" style="color:red;" />
+                  		</div>
                     </div>
   
               </div>
@@ -379,19 +385,19 @@
   
               <div class="form-row ">
                 <div class="col-md-6 mb-3">
-                  <form:input path="city" type="text" class="form-control" name="city" id="city" placeholder="City" />
+                  City:<form:input path="city" type="text" class="form-control text-info" name="city" id="city" />
                   <div class="has-error">
                   	<form:errors path="city" class="help-inline" style="color:red;" />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 ">
-                  <form:input path="state" type="text" class="form-control" name="state" id="state" placeholder="State"  />
+                  State:<form:input path="state" type="text" class="form-control text-info" name="state" id="state" />
                   <div class="has-error">
                   	<form:errors path="state" class="help-inline" style="color:red;" />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 ">
-                  <form:input path="zip" type="text" class="form-control" name="zip" id="zip" placeholder="Zip"  />
+                  Zip:<form:input path="zip" type="text" class="form-control text-info" name="zip" id="zip" />
                   <div class="has-error">
                   	<form:errors path="zip" class="help-inline" style="color:red;" />
                   </div>
@@ -404,7 +410,7 @@
                       <label for="validationTooltipUsername">Current Martial Status</label>
                       <div class="input-group">
   
-                          <form:select path="marrage" class="custom-select" name="marrage" id="current_martial_status" >
+                          <form:select path="marrage" class="custom-select text-info" name="marrage" id="current_martial_status" >
                               <option value="">Select Current Martial Status</option>
                               <option value="Married">Married</option>
                               <option value="Engaged">Engaged</option>
@@ -412,18 +418,22 @@
                             </form:select>
                       </div>
                       <div class="has-error">
-                  	<form:errors path="marrage" class="help-inline" style="color:red;" />
-                  </div>
+                  	      <form:errors path="marrage" class="help-inline" style="color:red;" />
+                  	  </div>
                     </div>
-                 </div>
-  
+                    
                     <div class="col-md-6 mb-2 mt-3">
                       <label for="validationTooltip01">Country Of Current Residence</label>
-                      <form:input path="country" type="text" name="country" class="form-control" id="country_of_current_resident" placeholder="Country Name" />
+                      <form:input path="country" type="text" name="country" class="form-control text-info" id="country_of_current_resident" />
+                      <form:input value="${visastd.id}" path="studentid" type="hidden" name="studentid" class="form-control text-info" id="country_of_current_resident" />
+                      <form:input value="not-verified" path="status" type="hidden" name="status" class="form-control text-info" id="status"/>
                       <div class="has-error">
-                  	<form:errors path="country" class="help-inline" style="color:red;" />
-                  </div>
-              </div>
+                  		 <form:errors path="country" class="help-inline" style="color:red;" />          
+                  	  </div>
+              		</div>
+                 </div>
+  
+                  <input  type="hidden" value="<c:out value="${pageContext.request.remoteUser}"/>" name="username">
   
               <form:button onclick="getAdd();" class="btn btn-primary mt-4" type="submit" id="updateText">Submit</form:button>
               <button class="btn btn-secondary mt-4 ml-4" type="reset" id="cancel" >Reset</button>
@@ -452,22 +462,18 @@
 
 
         </div>        
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
-
-        <script src="../../static/admin/js/admin_profile_image_btn.js"></script>
-
-  <!-- Bootstrap core JavaScript-->
-		  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
-  		<script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- Bootstrap core JavaScript-->
+  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
- 		 <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  		<script src="../../static/admin/js/sb-admin-2.min.js"></script>
+  <script src="../../static/admin/js/sb-admin-2.min.js"></script>
+
+  <script src="../../static/admin/js/view.js"></script>
+ 
 
   <script>
 
@@ -475,6 +481,11 @@
 
 		var retVal = confirm("Are You Sure to Apply?");
 		if(retVal==true) {
+			
+			var x = document.getElementById("addingData");
+			x.className = "show";
+			setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			
 			return true;
 			} 
 		else {
@@ -483,8 +494,13 @@
 		
 		}
 
+	function toastFunction() {
+		  var x = document.getElementById("snackbar");
+		  x.className = "show";
+		  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+		}
+	</script>
 
-</script>	
   
 
     </body>

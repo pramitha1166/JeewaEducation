@@ -13,3 +13,4 @@ function editText() {
     document.getElementById('updateText').innerText = "Save";
     document.getElementById('cancel').removeAttribute('hidden');
 }
+

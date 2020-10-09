@@ -3,14 +3,16 @@
     pageEncoding="UTF-8"%>
     
     <%
-    	if(session.getAttribute("visauserid")==null){
-    		response.sendRedirect("/profile/visa");
-    	}
+    	//if(session.getAttribute("visauserid")==null){
+    		//response.sendRedirect("/profile/visa");
+    	//}
     
     %>
     
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 
 <head>
@@ -23,8 +25,7 @@
 
   <title>Employee Admin - Admin Profile</title>
 
-  <!-- Custom fonts for this template -->
-  <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+ <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -32,15 +33,11 @@
 
   <!-- Custom styles for this page -->
   <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
-<input type="text" value="<%session.getAttribute("visauserid");%>">
 
-<c:out value="${sessionScope.visauserid}" />
 
-<a href="<% session.invalidate();%>">Logout</a>
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -254,7 +251,11 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>
+                </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -272,7 +273,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/profile/visa/logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -288,7 +289,11 @@
                   <!-- Page Heading -->
                         
 
-	          <p class="h4">Hello Jane, </p>
+	          <p class="h4">Hello 
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>, 
+			</p>
 	          <p>Welcome to student VISA Section. Now our agency provide online VISA submission platform for our student.<br>You have to follow below steps to apply for the VISA.</p>
 	
 	          <br>
@@ -298,7 +303,14 @@
 	          <br>
 	          <p>1. Fill and submit VISA application which is provide by university. click below button to apply for VISA.</p>
 	
-	          <button class="btn btn-primary mb-2"><a href="/profile/submitpendingvisa?id=">Apply Now</a></button>
+			  <security:authorize access="isAuthenticated()">
+				<form action="/profile/visa/SubmitAplication">
+				  <input  type="hidden" value="<c:out value="${pageContext.request.remoteUser}"/>" name="username">
+				  <input type="submit" class="btn btn-primary mb-2" value="Apply Now">
+				</form>
+			  </security:authorize>
+			  
+	      
 	          <p>2. Wait until verify your application by agency.</p>
 	          <p>3. After verified your application, submit relavent document which required to VISA process. (  After verify your application, system will visible VISA submission application form with new interface. )</p>
 	          <p>4. After verify your VISA submission details, you have to face interview which conduct by Embassy. ( We will notify you interview date with time. )</p>
@@ -367,22 +379,15 @@
 
         </div>        
 
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
-
-        <script src="../../static/admin/js/admin_profile_image_btn.js"></script>
-
-  <!-- Bootstrap core JavaScript-->
-		  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
-  		<script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+  <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
- 		 <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  		<script src="../../static/admin/js/sb-admin-2.min.js"></script>
+  <script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
     </body>
 </html>

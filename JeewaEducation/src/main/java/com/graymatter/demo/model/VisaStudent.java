@@ -1,12 +1,21 @@
 package com.graymatter.demo.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
 public class VisaStudent {
@@ -15,8 +24,8 @@ public class VisaStudent {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String id;
 	private String NIC;
-	private String name_with_ini;
-	private String fullname;
+	private String firstname;
+	private String lastname;
 	private String address;
 	private int phonenum;
 	private String email;
@@ -28,6 +37,24 @@ public class VisaStudent {
 	private String username;
 	private String password;
 	
+	@OneToOne(mappedBy = "visastudent")
+	private VisaApplication pendingvisastd;
+	
+	@OneToOne(mappedBy = "visastudent")
+	private VerifiedVisa verifiedvisastd;
+	
+	public VisaApplication getPendingvisastd() {
+		return pendingvisastd;
+	}
+	public void setPendingvisastd(VisaApplication pendingvisastd) {
+		this.pendingvisastd = pendingvisastd;
+	}
+	public VerifiedVisa getVerifiedvisastd() {
+		return verifiedvisastd;
+	}
+	public void setVerifiedvisastd(VerifiedVisa verifiedvisastd) {
+		this.verifiedvisastd = verifiedvisastd;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -77,17 +104,18 @@ public class VisaStudent {
 	public void setNIC(String nIC) {
 		NIC = nIC;
 	}
-	public String getName_with_ini() {
-		return name_with_ini;
+
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setName_with_ini(String name_with_ini) {
-		this.name_with_ini = name_with_ini;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
-	public String getFullname() {
-		return fullname;
+	public String getLastname() {
+		return lastname;
 	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	public String getAddress() {
 		return address;
@@ -109,12 +137,11 @@ public class VisaStudent {
 	}
 	@Override
 	public String toString() {
-		return "VisaStudent [id=" + id + ", NIC=" + NIC + ", name_with_ini=" + name_with_ini + ", fullname=" + fullname
+		return "VisaStudent [id=" + id + ", NIC=" + NIC + ", firstname=" + firstname + ", lastname=" + lastname
 				+ ", address=" + address + ", phonenum=" + phonenum + ", email=" + email + ", uni=" + uni + ", age="
 				+ age + ", course=" + course + ", sex=" + sex + ", username=" + username + ", password=" + password
-				+ "]";
+				+ ", pendingvisastd=" + pendingvisastd + ", verifiedvisastd=" + verifiedvisastd + "]";
 	}
-
 
 	
 }
