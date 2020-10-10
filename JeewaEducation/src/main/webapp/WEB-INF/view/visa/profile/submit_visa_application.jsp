@@ -47,7 +47,6 @@
 <body id="page-top">
 
 
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -356,11 +355,10 @@
                       <div class="input-group">
   
                           <form:select path="gender" class="custom-select text-info" id="sex" name="gender" >
-                              <option value="${visastd.sex}" selected>${visastd.sex}</option>
-                              <option value="Male" >Male</option>
-                              <option value="Female">Female</option>
-                              <option value="Other">Other</option>
-                            </form:select>
+                          	<c:forEach items="${genderList}" var="gender">
+                              <option value="${visastd.sex}">${visastd.sex}</option>                         
+                            </c:forEach> 
+                          </form:select>
                             
                       </div>
                       
@@ -432,6 +430,8 @@
                   	  </div>
               		</div>
                  </div>
+                 
+          			
   
                   <input  type="hidden" value="<c:out value="${pageContext.request.remoteUser}"/>" name="username">
   

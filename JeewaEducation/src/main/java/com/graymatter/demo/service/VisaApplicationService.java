@@ -23,8 +23,8 @@ public class VisaApplicationService {
 		return repo.findByStudentid(stdid);
 	}
 	
-	public void addVisaApplication(VisaApplication pendingforvisa) {
-		repo.save(pendingforvisa);
+	public void addVisaApplication(VisaApplication application) {
+		repo.save(application);
 	}
 	
 	public VisaApplication getVisaById(int visaid) {
@@ -46,5 +46,6 @@ public class VisaApplicationService {
 	public void deletePendingVisa(int id) {
 		repo.deleteById(id);
 	}
+	
 	
 }

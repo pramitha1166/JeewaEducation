@@ -2,6 +2,7 @@ package com.graymatter.demo.controller;
 
 import java.net.http.HttpRequest;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,7 @@ import com.graymatter.demo.model.VisaApplication;
 import com.graymatter.demo.model.VisaStudent;
 import com.graymatter.demo.service.VisaApplicationService;
 
+
 @Controller
 public class VisaApplicationController {
 
@@ -40,6 +42,13 @@ public class VisaApplicationController {
 	public String addVisaApplication(@RequestParam String username,Model model,HttpServletRequest req) {
 		
 		VisaStudent visastd = service.getVisaByUsername(username);
+		
+		List<String> marrageList = Arrays.asList("Married","Not-Married","Engaged");
+		req.setAttribute("marrageList",marrageList);
+		
+
+		List<String> genderList = Arrays.asList("male","female");
+		req.setAttribute("genderList",genderList);
 		
 		req.setAttribute("visastd", visastd);
 		
@@ -66,6 +75,17 @@ public class VisaApplicationController {
 			return "visa/profile/submit_visa_application";
 		}
 	}
+	
+	@RequestMapping(value = "/admin/applications/{pendingforvisa.id}")
+	public String updateVisaApplication(@Valid @ModelAttribute("application") VisaApplication application,@RequestParam int id) {
+		
+		
+		service.addVisaApplication(application);
+		
+		return "redirect:/admin/applications";
+	}
+	
+	
 	
 	
 	@PostMapping(value = "/admin/VisaApplication/{penvisa.id}")
@@ -99,21 +119,22 @@ public class VisaApplicationController {
 	}
 	
 	
-	@RequestMapping(value = "/admin/VisaApplication/{pendingforvisa.id}")
+	@GetMapping(value = "/admin/applications/{pendingforvisa.id}")
 	public String getPendingVisaById(@PathVariable(name="pendingforvisa.id") Integer id, ModelMap model,HttpServletRequest req) {
 		
 		//ModelAndView mv = new ModelAndView("pendingforvisa");
 		
-		VisaApplication penvisa = service.getVisaById(id);
+		VisaApplication application = service.getVisaById(id);
 		
-		req.setAttribute("pendingvisa", penvisa);
+		req.setAttribute("pendingvisa", application);
 		
-		model.addAttribute("pendingforvisa",penvisa);
+		model.addAttribute("application",application);
 		//req.setAttribute("pendingvisa", penvisa);
 		
 		//mv.addObject("pendingvisa",penvisa);
 		
 		return "visa/viewvisastudent";
 	}
+	
 	
 }

@@ -333,7 +333,7 @@
                         <td>${pendingforvisa.city}</td>                     
                         <td>${pendingforvisa.studentid}</td>                
                         <td>${pendingforvisa.status}</td>                  
-                        <td><a href="VisaApplication/${pendingforvisa.id}" class="btn btn-info btn-icon-split">
+                        <td><a href="applications/${pendingforvisa.id}" class="btn btn-info btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-info-circle"></i>
                           </span>

@@ -17,12 +17,5 @@ public interface VisaApplicationRepo extends JpaRepository<VisaApplication, Inte
 	List<VisaApplication> findByCity(String city);
 	
 	VisaApplication findByStudentid(String stdid);
-	/*
-	@Modifying
-	@Query(value = "insert into pendingforvisa (city,country,dob,email,fname,gender,lname,other,state,zip,usernamefk) values (:city, :country, :dob, :email, :fname, :gender, :lname, :other, :state, :zip, :usernamefk)", nativeQuery = true)
-	void insertVisa(@Param("city") String city, @Param("country") String country, @Param("dob") String dob, @Param("email") String email, @Param("fname") String fname,@Param("gender") String gender,@Param("lname") String lname,@Param("other") String other, @Param("state") String state,@Param("zip") String zip,@Param("usernamefk") String usernamefk);
-	*/
-	
-	
 	
 }

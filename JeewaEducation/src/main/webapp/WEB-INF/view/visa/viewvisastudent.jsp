@@ -282,7 +282,7 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Update VISA Application Form Details</h1>
          
-          <form:form  modelAttribute="pendingforvisa" class="wasvalidated" method="post" action="${penvisa.id}">
+          <form:form  modelAttribute="application" class="wasvalidated" method="post" action="${penvisa.id}">
 
             <div class="form-row">
                 <div class="col-md-3 mb-3">
