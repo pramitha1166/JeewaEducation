@@ -8,7 +8,7 @@ public class CompanyIncomes {
 	@Id
 	private int id;
 	private String type;
-	private int amount;	
+	private Double amount;	
 	
 	public int getId() {
 		return id;
@@ -26,11 +26,11 @@ public class CompanyIncomes {
 		this.type = type;
 	}
 
-	public int getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 

@@ -12,7 +12,7 @@ public class PaymentForVISA {
 	private int id;
 	private String name;
 	private int studentId;
-	private Float depositedAmount;
+	private Double depositedAmount;
 	private String bank;
 	private String branch;
 	private String date;
@@ -36,10 +36,10 @@ public class PaymentForVISA {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public Float getDepositedAmount() {
+	public Double getDepositedAmount() {
 		return depositedAmount;
 	}
-	public void setDepositedAmount(Float depositedAmount) {
+	public void setDepositedAmount(Double depositedAmount) {
 		this.depositedAmount = depositedAmount;
 	}
 	public String getBank() {

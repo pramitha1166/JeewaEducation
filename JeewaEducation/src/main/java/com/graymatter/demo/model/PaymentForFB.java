@@ -12,7 +12,7 @@ public class PaymentForFB {
 	private int id;
 	private String name;
 	private int studentId;
-	private Float depositedAmount;
+	private Double depositedAmount;
 	private String bank;
 	private String branch;
 	private String date;
@@ -42,11 +42,11 @@ public class PaymentForFB {
 		this.studentId = studentId;
 	}
 
-	public Float getDepositedAmount() {
+	public Double getDepositedAmount() {
 		return depositedAmount;
 	}
 
-	public void setDepositedAmount(Float depositedAmount) {
+	public void setDepositedAmount(Double depositedAmount) {
 		this.depositedAmount = depositedAmount;
 	}
 

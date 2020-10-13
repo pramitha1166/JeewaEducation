@@ -61,7 +61,7 @@
 	  <li class="nav-item">
         <a class="nav-link" href="/admin/payment-Expences-List">
           <i class="fas fa-dollar-sign"></i>
-          <span>Expences</span></a>
+          <span>Expenses</span></a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="/admin/payment-report">
@@ -97,7 +97,7 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" id="myInput" onkeyup="myFunction()" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -267,6 +267,17 @@
           </ul>
 
         </nav>
+        <ul id="myUL"  style="display: inline-flex;">
+  			<li><a id="myLI" href="/admin/payment-dashboard">Dashboard</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-VISA">VISA Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  			<li><a id="myLI" href="/admin/payment-FoundationBatch">Foundation Batch Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-Income-List">Income</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  			<li><a id="myLI" href="/admin/payment-Expences-List">Expenses</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-report">Report</a></li>
+  		
+		</ul>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -341,7 +352,7 @@
 				<div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Expences</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Expenses</div>
                      
                     </div>
                     <div class="col-auto">
@@ -383,7 +394,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; Jeewa Education 2020</span>
           </div>
         </div>
       </footer>
@@ -436,5 +447,8 @@
   <!-- Page level custom scripts -->
   <script src="../static/admin/js/demo/datatables-demo.js"></script>
 
+  <!-- custom script for nav search bar -->
+  <script src="../static/payment/search.js"></script>
+  
 </body>
 </html>

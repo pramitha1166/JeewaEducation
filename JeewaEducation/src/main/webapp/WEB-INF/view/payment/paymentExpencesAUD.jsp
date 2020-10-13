@@ -57,14 +57,9 @@ input[type="text"] {
 	margin-right: .8rem;
 }
 </style>
-
-
-
-
 </head>
 
 <body id="page-top">
-
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -140,9 +135,7 @@ input[type="text"] {
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
+							<input type="text" id="myInput" onkeyup="myFunction()" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
 							<div class="input-group-append">
 								<button class="btn btn-primary" type="button">
 									<i class="fas fa-search fa-sm"></i>
@@ -321,13 +314,24 @@ input[type="text"] {
 					</ul>
 
 				</nav>
+				<ul id="myUL"  style="display: inline-flex;">
+  					<li><a id="myLI" href="/admin/payment-dashboard">Dashboard</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-VISA">VISA Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  					<li><a id="myLI" href="/admin/payment-FoundationBatch">Foundation Batch Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-Income-List">Income</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  					<li><a id="myLI" href="/admin/payment-Expences-List">Expenses</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-report">Report</a></li>
+  		
+				</ul>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Expences</h1>
+					<h1 class="h3 mb-2 text-gray-800">Expenses</h1>
 
 					<!-- back to list -->
 					<div class="backTable">
@@ -345,24 +349,26 @@ input[type="text"] {
 							<!-- Default Card Example -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Update and
-										Delete (Expences)</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Update (Expenses)</h6>
 								</div>
 								<div class="card-body">
-								<form class="was-validated" action="expencesupdate" method="post">
-									<label>Expences ID</label><br> <input type="text" readonly/><br>
-									<label>Expences Type</label><br> <input type="text" readonly /><br>
-									<label>Amount (Rs.)</label><br> <input type="text" /><br>
-									<a href="#" class="btn btn-warning btn-icon-split">
+								<form action="companyExpencesUpdate" method="post">
+									<label>Expences ID</label><br> <input name="id" value="${companyExpences.id}" type="text" readonly/><br>
+									<label>Expences Type</label><br> <input name="type" value="${companyExpences.type}" type="text" readonly /><br>
+									<label>Amount (Rs.)</label><br> <input name="amount" value="${companyExpences.amount}" type="text" /><br><br>
+									<button type="submit" id="updateText">
+									<a href="#" onclick="getUpdate()" class="btn btn-warning btn-icon-split">
 										<span class="icon text-white-50"> <i
 											class="fas fa-exclamation-triangle"></i>
 									</span> <span class="text">Update</span>
-									</a>
+									</a></button>&nbsp;&nbsp;&nbsp;
 									
-									 <a href="#" class="btn btn-danger btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-trash"></i>
-									</span> <span class="text">Delete</span>
+									<button type="button" id="cancelText">
+									 <a href="/admin/payment-Expences-List" class="btn btn-light btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fas fa-arrow-right"></i>
+									</span> <span class="text">Cancel</span>
 									</a>
+									</button>
 									
 								</form>
 								</div>
@@ -380,12 +386,12 @@ input[type="text"] {
 								<div class="card-body">
 									<form class="was-validated" action="submitexpences" method="post">
 										<label>Expence ID</label><br> 
-										<input type="text" name="id" required/><br>
+										<input type="text" name="id" pattern="[0-9]+$" required/><br>
 										<label>Expence Type</label><br>
 										<input type="text" name="type" required/><br>
 										<label>Amount (Rs.)</label><br> 
 										<input type="text" name="amount" required/><br><br> 
-										<button class="btn btn-primary mt-4" type="submit" id="updateText">
+										<button  type="submit" id="updateText">
 										<a class="btn btn-success btn-icon-split"> 
 										<span class="icon text-white-50"> <i class="fas fa-check"></i></span>
 										<span class="text">Save and Add</span>
@@ -406,7 +412,7 @@ input[type="text"] {
 				<footer class="sticky-footer bg-white">
 					<div class="container my-auto">
 						<div class="copyright text-center my-auto">
-							<span>Copyright &copy; Your Website 2020</span>
+							<span>Copyright &copy; Jeewa Education 2020</span>
 						</div>
 					</div>
 				</footer>
@@ -463,5 +469,20 @@ input[type="text"] {
 
   <!-- Page level custom scripts -->
   <script src="../static/admin/js/demo/datatables-demo.js"></script>
+  
+  <!-- custom script for nav search bar -->
+  <script src="../static/payment/search.js"></script>
+  <script>
+		function getUpdate() {
+
+			var retVal = confirm("Do You Want to Update This Record?");
+			if (retVal == true) {
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+  </script>
 </body>
 </html>

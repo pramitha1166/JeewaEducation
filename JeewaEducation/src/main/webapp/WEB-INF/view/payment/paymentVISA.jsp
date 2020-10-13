@@ -63,7 +63,7 @@
 	  <li class="nav-item">
         <a class="nav-link" href="/admin/payment-Expences-List">
           <i class="fas fa-dollar-sign"></i>
-          <span>Expences</span></a>
+          <span>Expenses</span></a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="/admin/payment-report">
@@ -101,14 +101,16 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" id="myInput" onkeyup="myFunction()" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
             </div>
-          </form>
+          </form><br>
+
+		
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -269,8 +271,18 @@
             </li>
 
           </ul>
+          
 
         </nav>
+        <ul id="myUL"  style="display: inline-flex;">
+  			<li><a id="myLI" href="/admin/payment-dashboard">Dashboard</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-VISA">VISA Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-FoundationBatch">Foundation Batch Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-Income-List">Income</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-Expences-List">Expenses</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			<li><a id="myLI" href="/admin/payment-report">Report</a></li>
+  		
+		</ul>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -278,19 +290,21 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">VISA Payments</h1>
-
+		  <a href="${'/visaList/pdf' }" style="margin-left: 75%;" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Download pdf</a>
+          <a href="${'/visaList/html' }" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Download html</a>
+          <br><br>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">VISA Payment List</h6>
             </div>
-            <form method="get" action = "paymentvlist">
+            <form method="POST" action = "paymentvlist">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>Payment ID</th>
                       <th>Name</th>
                       <th>Student ID</th>
                       <th>Bank</th>
@@ -325,7 +339,7 @@
 					  <td>${PaymentForVISA.branch}</td>
                       <td>${PaymentForVISA.date}</td>
                       <td>${PaymentForVISA.paymentSlip}</td>
-                      <td><a href="#" class="btn btn-danger btn-icon-split">
+                      <td><a href="deleteVISAPayment?id=${PaymentForVISA.id}" onclick="getDelete()" class="btn btn-danger btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
                           </span>
@@ -350,7 +364,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; Jeewa Education 2020</span>
           </div>
         </div>
       </footer>
@@ -403,5 +417,20 @@
   <!-- Page level custom scripts -->
   <script src="../static/admin/js/demo/datatables-demo.js"></script>
 
+  <!-- custom script for nav search bar -->
+  <script src="../static/payment/search.js"></script>
+  
+  <script>
+    	function getDelete() {
+
+			var retVal = confirm("Do You Want to Delete This Record?");
+			if (retVal == true) {
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+    </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -203,24 +205,9 @@
         <!-- End of Topbar -->
 
 <div class="background" ><br><br>
-	<div class="payment_summery">
-		<h1>Payment Summery</h1>
-		<h4>You have successfully submitted your payment.</h4>
-		<div class="inner_box">
-		<form method="GET" action="paymentsum">
-			<c:forEach var="PaymentForVISA" items="${listvsummery}">
-			<h1>Payment Details</h1>
-			<label>Amount (Rs.)         :</label>
-			<input type="text" name="payment" readonly value="${PaymentForVISA.depositedAmount}"><br>
-			<label>Bank                 :</label>
-			<input type="text" name="bank" readonly value="${PaymentForVISA.bank}"><br>
-			<label>Branch               :</label>
-			<input type="text" name="branch" readonly value="${PaymentForVISA.branch}"><br>
-			</c:forEach>
-			</form>
-		</div>
-	</div>
-	</div>
-	
+	<img src="../static/payment/summery/images/checkmarkForSummary.jpg" style="display: block; margin-top:15px; margin-left: auto; margin-right: auto; width:14%;">
+	<h1 style="text-align: center; font-weight:bolder; color: black; font-family: 'Pacifico', cursive;">THANK YOU!</h1>
+	<h4 style="text-align: center; color: black;">We Received Your Submission.</h4>
+</div>
 </body>
 </html>

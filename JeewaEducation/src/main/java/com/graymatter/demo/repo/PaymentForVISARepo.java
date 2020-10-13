@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.graymatter.demo.model.PaymentForVISA;
 
-public interface PaymentForVISARepo extends JpaRepository<PaymentForVISA, Integer>{
+public interface PaymentForVISARepo extends JpaRepository<PaymentForVISA, Integer> {
 
 }

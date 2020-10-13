@@ -95,7 +95,7 @@ input[type="button"] {
 					<span>Income</span></a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/admin/payment-Expences-List"> <i
-					class="fas fa-dollar-sign"></i> <span>Expences</span></a></li>
+					class="fas fa-dollar-sign"></i> <span>Expenses</span></a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/admin/payment-report"> <i class="fas fa-calendar"></i> <span>Report</span></a>
 			</li>
@@ -133,9 +133,7 @@ input[type="button"] {
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
+							<input type="text" id="myInput" onkeyup="myFunction()" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
 							<div class="input-group-append">
 								<button class="btn btn-primary" type="button">
 									<i class="fas fa-search fa-sm"></i>
@@ -314,6 +312,17 @@ input[type="button"] {
 					</ul>
 
 				</nav>
+				
+				<ul id="myUL"  style="display: inline-flex;">
+  					<li><a id="myLI" href="/admin/payment-dashboard">Dashboard</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-VISA">VISA payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-FoundationBatch">Foundation Batch Payments</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-Income-List">Income</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-Expences-List">Expenses</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<li><a id="myLI" href="/admin/payment-report">Report</a></li>
+  		
+				</ul>
+				
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -337,7 +346,7 @@ input[type="button"] {
 								value="Add a Entry" class="add-button" /></a>
 						</div>
 
-						<form method="get" action = "paymentelist">
+						<form method="POST" action = "paymentelist">
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" id="dataTable" width="100%"
@@ -366,12 +375,12 @@ input[type="button"] {
 												<td>${PaymentIncomes.id}</td>
 												<td>${PaymentIncomes.type}</td>
 												<td>${PaymentIncomes.amount}</td>
-												<td><a href="#" class="btn btn-warning btn-icon-split">
+												<td><a href="viewIncomesForUpdate?id=${PaymentIncomes.id}" class="btn btn-warning btn-icon-split">
 														<span class="icon text-white-50"> <i
 															class="fas fa-exclamation-triangle"></i>
 													</span> <span class="text">Update</span>
 												</a></td>
-												<td><a href="#" class="btn btn-danger btn-icon-split">
+												<td><a href="deleteIncomes?id=${PaymentIncomes.id}" onclick="getDelete()" class="btn btn-danger btn-icon-split">
 														<span class="icon text-white-50"> <i
 															class="fas fa-trash"></i>
 													</span> <span class="text">Delete</span>
@@ -395,7 +404,7 @@ input[type="button"] {
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
+						<span>Copyright &copy; Jeewa Education 2020</span>
 					</div>
 				</div>
 			</footer>
@@ -454,6 +463,20 @@ input[type="button"] {
 
 	<!-- Page level custom scripts -->
 	<script src="../static/admin/js/demo/datatables-demo.js"></script>
+	<script>
+			function getDelete() {
 
+				var retVal = confirm("Do You Want to Delete This Record?");
+				if (retVal == true) {
+					return true;
+				} else {
+					return false;
+				}
+
+			}
+	</script>
+	
+	<!-- custom script for nav search bar -->
+  	<script src="../static/payment/search.js"></script>
 </body>
 </html>
