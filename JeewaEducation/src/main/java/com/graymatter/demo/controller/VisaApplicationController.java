@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -43,20 +44,28 @@ public class VisaApplicationController {
 		
 		VisaStudent visastd = service.getVisaByUsername(username);
 		
-		List<String> marrageList = Arrays.asList("Married","Not-Married","Engaged");
-		req.setAttribute("marrageList",marrageList);
+	//	boolean result = service.checkVisaApplicationAvailable(visastd.getId());
 		
-
-		List<String> genderList = Arrays.asList("male","female");
-		req.setAttribute("genderList",genderList);
+		//if(result==true) {
+			//return "redirect:/profile/visa/profile_01";
+		//}else {
+			
+			List<String> marrageList = Arrays.asList("Married","Not-Married","Engaged");
+			req.setAttribute("marrageList",marrageList);
+			
+	
+			List<String> genderList = Arrays.asList("male","female");
+			req.setAttribute("genderList",genderList);
+			
+			req.setAttribute("visastd", visastd);
+			
+			model.addAttribute("application", new VisaApplication());
+			return "visa/profile/submit_visa_application";
 		
-		req.setAttribute("visastd", visastd);
-		
-		model.addAttribute("application", new VisaApplication());
-		return "visa/profile/submit_visa_application";
+		//}
 		
 	}
-	
+	/*
 	@PostMapping(value = "/profile/visa/SubmitAplication")
 	public String submitVisaApplication(@Valid @ModelAttribute("application") VisaApplication application,@RequestParam String username, BindingResult result, ModelMap model,HttpServletRequest req, RedirectAttributes redirectAttributes) throws SQLIntegrityConstraintViolationException {
 		try {
@@ -75,33 +84,30 @@ public class VisaApplicationController {
 			return "visa/profile/submit_visa_application";
 		}
 	}
+	*/
 	
-	@RequestMapping(value = "/admin/applications/{pendingforvisa.id}")
+	
+	
+	@RequestMapping(value = "/admin/visa-applications/{pendingforvisa.id}")
 	public String updateVisaApplication(@Valid @ModelAttribute("application") VisaApplication application,@RequestParam int id) {
 		
 		
 		service.addVisaApplication(application);
 		
-		return "redirect:/admin/applications";
+		return "redirect:/admin/visa-applications";
 	}
 	
-	
-	
-	
-	@PostMapping(value = "/admin/VisaApplication/{penvisa.id}")
-	public String updateVisaApplication(@RequestParam int id,VisaApplication application, BindingResult result) {
-		
-		if(result.hasErrors()) {
-			return "visa/viewvisastudent";
-		}
-		
+	@RequestMapping(value = "/profile/visa/update")
+	public String updateVisaAtProfile(@Valid @ModelAttribute("application") VisaApplication application,@RequestParam int id) {
 		service.deletePendingVisa(id);
 		service.addVisaApplication(application);
-		return "redirect:/admin/applications";
+		return "redirect:/profile/visa/update?id="+id;
 	}
 	
 	
-	@GetMapping(value = "/admin/applications")
+	
+	
+	@GetMapping(value = "/admin/visa-applications")
 	public String listAllPendingVisa(HttpServletRequest req) {
 		
 		List<VisaApplication> listApplications = service.listAllVisaApplications();
@@ -115,11 +121,11 @@ public class VisaApplicationController {
 	@RequestMapping("/admin/deleteVisaApplication")
 	public String deletePendingVisa(@RequestParam int id) {
 		service.deletePendingVisa(id);
-		return "redirect:/admin/applications";
+		return "redirect:/admin/visa-applications";
 	}
 	
 	
-	@GetMapping(value = "/admin/applications/{pendingforvisa.id}")
+	@GetMapping(value = "/admin/visa-applications/{pendingforvisa.id}")
 	public String getPendingVisaById(@PathVariable(name="pendingforvisa.id") Integer id, ModelMap model,HttpServletRequest req) {
 		
 		//ModelAndView mv = new ModelAndView("pendingforvisa");

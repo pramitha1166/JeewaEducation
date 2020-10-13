@@ -23,8 +23,8 @@ public class VisaApplicationService {
 		return repo.findByStudentid(stdid);
 	}
 	
-	public void addVisaApplication(VisaApplication application) {
-		repo.save(application);
+	public VisaApplication addVisaApplication(VisaApplication application) {
+		return repo.save(application);
 	}
 	
 	public VisaApplication getVisaById(int visaid) {
@@ -47,5 +47,16 @@ public class VisaApplicationService {
 		repo.deleteById(id);
 	}
 	
+	public boolean checkVisaApplicationAvailable(String stdid) {
+		
+		VisaApplication visaApplication = repo.findByStudentid(stdid);
+		
+		if(visaApplication!=null) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 	
 }

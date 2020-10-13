@@ -290,6 +290,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th></th>	
                       <th>Visa ID</th>
                       <th>Student Name</th>
                       <th>Country</th>
@@ -306,6 +307,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                    	<th></th>
                         <th>Visa ID</th>
                         <th>Student Name</th>
                         <th>Country</th>
@@ -323,6 +325,7 @@
                   <tbody>
                 	<c:forEach var="pendingforvisa" items="${pendingvisa}">
                     <tr>
+                    	<td><img src="data:image/jpeg;base64,${pendingforvisa.medical}" width="100" height="100"/></td>
                         <td>${pendingforvisa.id}</td>
                         <td>${pendingforvisa.fname}</td>
                         <td>${pendingforvisa.country}</td>
@@ -333,7 +336,7 @@
                         <td>${pendingforvisa.city}</td>                     
                         <td>${pendingforvisa.studentid}</td>                
                         <td>${pendingforvisa.status}</td>                  
-                        <td><a href="applications/${pendingforvisa.id}" class="btn btn-info btn-icon-split">
+                        <td><a href="visa-applications/${pendingforvisa.id}" class="btn btn-info btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-info-circle"></i>
                           </span>

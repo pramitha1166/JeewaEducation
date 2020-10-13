@@ -29,6 +29,7 @@
   <meta name="author" content="">
 
   <title>Employee Admin - Admin Profile</title>
+  
 
   <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -42,6 +43,10 @@
 
   <!-- Custom styles for this page -->
   <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"></head>
+  
 </head>
 
 <body id="page-top">
@@ -302,12 +307,36 @@
             
             <h2 class="h2 mb-2 text-gray-800">Hello ${visastd.firstname} ${visastd.lastname}. Now you can submit your VISA.</h2>
            
-            <form:form class="wasvalidated" modelAttribute="application" action="SubmitAplication" method="post">
+            
+                 <div class="form-row">
+                 
+                 	<div class="col-md-6 mb-2 mt-3">
+                 	
+                 		2*2 User Photo:<input type="file" class="form-control text-info" name="medicalFile" id="medical" />
+            			
+                 	
+                 	</div>
+                 	<div class="col-md-3 mb-2 mt-3">
+                 	
+                 		<button id="uploadFile" class="uploadImageBtn" onclick="uploadFile();">Upload</button>
+                 		
+                 	
+                 	</div>
+                 	<div class="col-md-3 mb-2 mt-6">
+                 	
+                 		<img class="img-fluid" name="medicalThumb" id="medicalThumb" width />
+                 	
+                 	</div>
+                 
+                 </div>
+                 
+           
+            <form:form class="wasvalidated" modelAttribute="application" id="submitForm" enctype="multipart/form-data">
   
               <div class="form-row">
                 <div class="col-md-4 mb-3">
                   <label for="validationTooltip01">First name</label>
-                  <form:input type="text" value="${visastd.firstname}" path="fname" class="form-control text-info" id="firstname" name="fname"  aria-describedby="validationTooltipUsernamePrepend"/>
+                  <form:input type="text" value="${visastd.firstname}" path="fname" class="form-control text-info" id="fname" name="fname"  aria-describedby="validationTooltipUsernamePrepend"/>
                   
                   <div class="has-error">
                   	<form:errors path="fname" class="help-inline" style="color:red;" />
@@ -317,7 +346,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="validationTooltip02">Last name</label>
-                  <form:input path="lname" value="${visastd.lastname}" type="text" class="form-control text-info" id="lastname"   name="lname"  />
+                  <form:input path="lname" value="${visastd.lastname}" type="text" class="form-control text-info" id="lname"   name="lname"  />
                   
                   <div class="has-error">
                   	<form:errors path="lname" class="help-inline" style="color:red;" />
@@ -326,7 +355,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="validationTooltip02">Other name</label>
-                  <form:input path="other" type="text" class="form-control text-info" id="other_name" name="other"   />
+                  <form:input path="other" type="text" class="form-control text-info" id="other" name="other"   />
                   
                   <div class="has-error">
                   	<form:errors path="other" class="help-inline" style="color:red;" />
@@ -338,8 +367,8 @@
               <div class="form-row">
                   <div class="col-md-6 mb-3 mt-3">
                       <label for="validationTooltipUsername">Personal Email for VISA Process</label>
-                    
-                        <form:input value="${visastd.email}" path="email" type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control text-info"   aria-describedby="validationTooltipUsernamePrepend" />
+                    <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  -->
+                        <form:input value="${visastd.email}" path="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" name="email" class="form-control text-info"   aria-describedby="validationTooltipUsernamePrepend" />
                         
 		                  <div class="has-error">
 		                  	<form:errors path="email" class="help-inline" style="color:red;" />
@@ -354,7 +383,7 @@
                       <label for="validationTooltipUsername">Gender</label>
                       <div class="input-group">
   
-                          <form:select path="gender" class="custom-select text-info" id="sex" name="gender" >
+                          <form:select path="gender" class="custom-select text-info" id="gender" name="gender" >
                           	<c:forEach items="${genderList}" var="gender">
                               <option value="${visastd.sex}">${visastd.sex}</option>                         
                             </c:forEach> 
@@ -408,7 +437,7 @@
                       <label for="validationTooltipUsername">Current Martial Status</label>
                       <div class="input-group">
   
-                          <form:select path="marrage" class="custom-select text-info" name="marrage" id="current_martial_status" >
+                          <form:select path="marrage" class="custom-select text-info" name="marrage" id="marrage" >
                               <option value="">Select Current Martial Status</option>
                               <option value="Married">Married</option>
                               <option value="Engaged">Engaged</option>
@@ -422,22 +451,22 @@
                     
                     <div class="col-md-6 mb-2 mt-3">
                       <label for="validationTooltip01">Country Of Current Residence</label>
-                      <form:input path="country" type="text" name="country" class="form-control text-info" id="country_of_current_resident" />
-                      <form:input value="${visastd.id}" path="studentid" type="hidden" name="studentid" class="form-control text-info" id="country_of_current_resident" />
+                      <form:input path="country" type="text" name="country" class="form-control text-info" id="country" />
+                      <form:input value="${visastd.id}" path="studentid" type="hidden" name="studentid" class="form-control text-info" id="studentid" />
                       <form:input value="not-verified" path="status" type="hidden" name="status" class="form-control text-info" id="status"/>
                       <div class="has-error">
                   		 <form:errors path="country" class="help-inline" style="color:red;" />          
                   	  </div>
               		</div>
                  </div>
-                 
-          			
+               	
   
                   <input  type="hidden" value="<c:out value="${pageContext.request.remoteUser}"/>" name="username">
   
-              <form:button onclick="getAdd();" class="btn btn-primary mt-4" type="submit" id="updateText">Submit</form:button>
+              <form:button  class="btn btn-primary mt-4" type="submit" id="updateText">Submit</form:button>
               <button class="btn btn-secondary mt-4 ml-4" type="reset" id="cancel" >Reset</button>
             </form:form>
+                 		
           </div>
 
 
@@ -463,45 +492,224 @@
 
         </div>        
           <!-- Bootstrap core JavaScript-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
   <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+ 
 
   <!-- Custom scripts for all pages-->
   <script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
   <script src="../../static/admin/js/view.js"></script>
  
+ <script src="../../static/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 
   <script>
 
+
+
+	function validateForm() {
+
+		var fname = $('#fname').val();
+		var lname = $('#lname').val();
+		var email = $('#email').val();
+		var dob = $('#dob').val();
+		//var pattern = '/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/';
+
+		if(fname=='') {
+			toastr["warning"]("Firstname Cannot Be Emplty!");
+			return false;
+		}else if(lname=='') {
+			toastr["warning"]("Last Name Cannot Be Emplty!");
+			return false;
+		}else if(email=='') {
+			toastr["warning"]("Email Cannot Be Emplty!");
+			return false;
+		}else if(dob=='') {
+			toastr["warning"]("Date Of Birth Cannot Be Emplty!");
+			return false;
+		}
+		else {
+			return true;
+		}
+		
+	}
+	
+  
 	function getAdd() {
 
 		var retVal = confirm("Are You Sure to Apply?");
-		if(retVal==true) {
-			
-			var x = document.getElementById("addingData");
-			x.className = "show";
-			setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-			
-			return true;
-			} 
+		if(retVal==true) {	
+			var res = validateForm();
+
+			if(res==true) {
+				submitApplication();
+				return true;
+			}else {
+				return false;	
+			}
+		} 
 		else {
 			return false;	
-			} 
+		} 
 		
-		}
+	}
 
-	function toastFunction() {
-		  var x = document.getElementById("snackbar");
-		  x.className = "show";
-		  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+ 
+	
+	$(document).ready(function() {
+
+
+		$("#medical").change(function() {
+			showMedicaThumb(this);
+		});
+		
+
+		$("#submitForm").submit(function(event) {
+
+			event.preventDefault();
+
+			//submitApplication();
+			getAdd();
+
+		});
+
+		$("#uploadFile").submit(function() {
+			
+			uploadFile();
+			
+		});
+
+
+	});
+
+
+
+	function uploadFile() {
+
+		var formData = new FormData();
+		var file = $('#medical')[0].files[0];
+
+		formData.append("fileUpload", file);
+		
+		$.ajax({
+	        url : '/profile/visa/upload',
+	        type : 'POST',
+	        data : formData,
+	        enctype : 'multipart/form-data',
+	        contentType : false,
+	        cache : false,
+	        processData : false,
+	        beforeSend: function() {
+		        
+	        	
+	        	toastr["info"]("File is Uploading!");
+				
+		      	},
+	        success : function(response) {
+	        
+	        	//alert("sucess");
+	        	//$(this).addClass("active");
+	        	toastr["success"]("File Upload Successfully!");
+	        	
+		        },
+	        error: function(){
+
+	        	toastr["warning"]("File Upload Not Sucess! Please Check File And Reupload!");
+	        	//toastr.success("hasdasdsa","Success",{timeOut: 3000});
+		        }    
+		});
+
+		
+	}
+	
+	
+	function showMedicaThumb(inputFile) {
+
+		file = inputFile.files[0];
+		reader = new FileReader();
+
+		reader.onload = function(e) {
+			$('#medicalThumb').attr('src', e.target.result);
+		};
+
+		reader.readAsDataURL(file); 
+		
+	}
+
+	function submitApplication() {
+		
+		var visa = {
+
+				fname : $("#fname").val(),
+				lname : $("#lname").val(),
+				other : $("#other").val(),
+				email : $("#email").val(),
+				gender : $("#gender").val(),
+				dob : $("#dob").val(),
+				city : $("#city").val(),
+				state : $("#state").val(),
+				zip : $("#zip").val(),
+				marrage : $("#marrage").val(),
+				country : $("#country").val(),
+				studentid : $("#studentid").val(),
+				status : $("#status").val(),
 		}
+		
+		$.ajax({
+
+			type : "POST",
+			contentType : "application/json",
+			url : "/profile/visa/save",
+			data : JSON.stringify(visa),
+			dataType : 'json',
+			success : function(result) {
+				if(result.status == "Done"){
+					toastr["success"]("Aplication Submit Suceessfully!");
+				}else {
+					toastr["info"]("Aplication Submit Fail!");
+				}
+				console.log(result);
+			},
+			error : function(e) {
+				toastr["error"]("Error With Submiting Application. Maybe You Already Apply For VISA. Thank You.","Error");
+				console.log("Error: ",e);
+			}
+
+		});
+
+		//resetData();
+
+	}
+
+	
+
+	function resetData() {
+
+		$("#fname").val("");
+		$("#lname").val("");
+		$("#other").val("");
+		$("#email").val("");
+		$("#gender").val("");
+		$("#dob").val("");
+		$("#city").val("");
+		$("#state").val("");
+		$("#zip").val("");
+		$("#marrage").val("");
+		$("#country").val("");
+		$("#studentid").val("");
+		$("#status").val("");	
+		
+	}
+		
+
+	
 	</script>
-
-  
+	
 
     </body>
 </html>

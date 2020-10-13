@@ -61,7 +61,7 @@
           <span>Visa Acceptable Students</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/applications">
+        <a class="nav-link" href="/admin/visa-applications">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Students' VISA Applications</span></a>
       </li>

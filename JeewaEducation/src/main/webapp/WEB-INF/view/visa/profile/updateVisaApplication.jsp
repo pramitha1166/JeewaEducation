@@ -1,12 +1,25 @@
 <!-- IT19056326 S.P.P.P.Wanigarathne -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+        <%
+        
+        
+        
+    //	if(session.getAttribute("visauserid")==null){
+    	//	response.sendRedirect("/profile/visa");
+    	//}
+    %>
+    
 <!DOCTYPE html>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
+
 <head>
 
   <meta charset="utf-8">
@@ -15,35 +28,39 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>VISA pending students</title>
+  <title>Employee Admin - Admin Profile</title>
 
- 
   <link href="../../static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../../static/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  
+  
+  <!-- css for toast massage -->
+  <link href="../../static/admin/css/visatoast.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
   <link href="../../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"></head>
+  
 </head>
 
 <body id="page-top">
-
-
 
   <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">VISA Administrator</div>
+        <div class="sidebar-brand-text mx-3">JeewaEducation</div>
       </a>
 
       <!-- Divider -->
@@ -51,29 +68,30 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/admin/visa-dashboard">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>My VISA Section</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/admin/visa-pendingstudents">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Visa Acceptable Students</span></a>
+          <span>Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/visa-pendinglist">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Students' VISA Applications</span></a>
+          <span>About</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Students' VISA Documents</span></a>
+          <span>Contact Us</span></a>
       </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+     
+
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -81,8 +99,6 @@
       </div>
 
     </ul>
-
-
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -90,9 +106,9 @@
 
       <!-- Main Content -->
       <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+ 
+         <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <form class="form-inline">
@@ -106,7 +122,7 @@
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-danger" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -244,9 +260,13 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
+             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                	<security:authorize access="isAuthenticated()">
+					    <security:authentication property="principal.username" />
+					</security:authorize>
+                </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -264,7 +284,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/profile/visa/logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -273,54 +293,48 @@
 
           </ul>
 
-        </nav>
-        <!-- End of Topbar -->
+         </nav>
 
+                
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Update VISA Application Form Details</h1>
-         
-         <!-- method="post" action="${penvisa.id}" -->
-         
-          
-         
-         
-          <form:form  modelAttribute="application" class="wasvalidated" id="uupdateAdminVisaApplication" method="post" action="${penvisa.id}">
-
-			   <div class="form-row">
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Update VISA Application Form Details</h1>
+            
+            <h2 class="h2 mb-2 text-gray-800">Hello ${visastd.firstname} ${visastd.lastname}. Now you can Update your VISA.</h2>
+           
+           
+               <div class="form-row">
                  
-                 	<div class="col-md-6 mb-2 mt-3">                 	
-                 		<form:input path="medical" type="hidden" class="form-control text-info" name="medicalFile" id="medical" />
-                 	</div>           
-                 	<div class="col-md-3 mb-2 mt-6">               	
-                 		<img src="data:image/jpeg;base64,${pendingvisa.medical}" />               	
+                 	              	
+                 		
+                 	          
+                 	<div class="col-md-3 mb-2 mt-3">               	
+                 		<input type="file" class="form-control text-info" name="medicalFile" id="medical" />
+                 	</div>
+                 	<div class="col-md-3 mb-2 mt-3">
+                 	
+                 		<button id="uploadFile" class="uploadImageBtn" onclick="uploadFile();">Upload</button>
+                 		
+                 	
+                 	</div>
+                 	<div class="col-md-3 mb-2 mt-3">
+                 		<img class="img-fluid" src="data:image/jpeg;base64,${application.medical}" width="200" height="300" id="medicalThumb"/>
+                 	
+                 	</div>
+                 	<div class="col-md-3 mb-2 mt-3">
+                 		<img class="img-fluid" width="200" height="300" id="medicalThumbNew"/>
+                 	
                  	</div>
                  
                  </div>
-
-            <div class="form-row">
-                <div class="col-md-3 mb-3">
-                    <label for="validationTooltipUsername">VISA ID</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                      </div>
-                      <form:input path="id" name="id" type="text" class="form-control" id="id" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>                     
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationTooltipUsername">Student ID</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                      </div>
-                      <form:input path="studentid" name="studentid" type="text" class="form-control" id="studentid" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>                     
-                    </div>
-                  </div>
-            </div>
-
+           
+       <form:form  modelAttribute="application" class="wasvalidated" id="updateApplication">
+        
+			<form:input path="medical" type="hidden" class="form-control text-info" name="medicalFile" id="medicalVal" />
+             <form:input path="studentid" name="studentid" type="hidden" class="form-control" id="studentid" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>     
+			 <form:input path="id" name="id" type="hidden" class="form-control" id="id" aria-describedby="validationTooltipUsernamePrepend"  readonly="readonly"/>                   
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationTooltip01">First name</label>
@@ -365,7 +379,7 @@
                     <div class="input-group">
 
                         <form:select path="gender" class="custom-select" id="gender" name="gender" >
-                            <option value="${pendingvisa.gender}">${pendingvisa.gender}</option>
+                            <option value="${application.gender}">${application.gender}</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                           </form:select>
@@ -417,7 +431,7 @@
                     <div class="input-group">
 
                         <form:select class="custom-select" id="marrage" name="marrage"  path="marrage">
-                            <option value="${pendingvisa.marrage}">${pendingvisa.marrage}</option>
+                            <option value="${application.marrage}">${application.marrage}</option>
                             <option value="Married">Married</option>
                             <option value="Engaged">Engaged</option>
                             <option value="Not-Married">Not-Married</option>
@@ -431,119 +445,40 @@
 
                   <div class="col-md-6 mb-2 mt-3">
                     <label for="validationTooltip01">Country Of Current Residence</label>
-                    <form:input path="country" type="text" class="form-control" id="country" name="country"  placeholder="Country Name"  />
+                    <form:input path="country" id="country" type="text" class="form-control" name="country"  placeholder="Country Name"  />
                       <div class="has-error">
                   	<form:errors path="country" class="help-inline" style="color:red;" />
                   </div>
             	</div>
             </div>
-			
-			<div class="form-row">
-				  <div class="col-md-6 mb-2 mt-3">
-                    <label for="validationTooltipUsername">Change Status</label>
-                    <div class="input-group">
-
-                        <form:select class="custom-select" id="status" name="status"  path="status">
-                            <option value="${pendingvisa.status}">${pendingvisa.status}</option>
-                            <option value="verified">verified</option>
-                            <option value="not-verified">not-verified</option>
-                          </form:select>
-                    </div>
-                      <div class="has-error">
-                  	<form:errors path="marrage" class="help-inline" style="color:red;" />
-                  </div>
-                  </div>
-			</div>
-			
-			<input onclick="getUpdate();" type="submit" class="btn btn-primary mt-4" value="Update">
-            <button class="btn btn-secondary mt-4 ml-4" id="cancel">Cancel</button>
+            
+            
+            
+			<form:input value="not-verified" path="status" type="hidden" name="status" class="form-control text-info" id="status"/>
+			<input type="submit" class="btn btn-primary mt-4" value="Update">
+            <button class="btn btn-secondary mt-4 ml-4" type="submit" id="cancel">Cancel</button>
+            
           </form:form>
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
           </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+		<!--button onclick="getDelete();" class="btn btn-danger mt-4" id="Delete">Delete</button-->
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+     
 
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <script>
-
-	function getUpdate() {
-
-		var retVal = confirm("Do You Want to Update This Record?");
-		if(retVal==true) {
-			return true;
-			} 
-		else {
-			return false;	
-			} 
-		
-		}
+            </div>
+            </div>
 
 
-
-</script>	
-
-  <!--script>
-
-  function editText() {
-	    document.getElementById('firstname').removeAttribute('readonly');
-	    document.getElementById('lastname').removeAttribute('readonly');
-	    document.getElementById('visaemail').removeAttribute('readonly');
-	    document.getElementById('gender').removeAttribute('disabled');
-	    document.getElementById('dateofbirth').removeAttribute('readonly');
-	    document.getElementById('city').removeAttribute('readonly');
-	    document.getElementById('state').removeAttribute('readonly');
-	    document.getElementById('zip').removeAttribute('readonly');
-	    document.getElementById('marrage').removeAttribute('disabled');
-	    document.getElementById('currentResidence').removeAttribute('readonly');
-
-	    document.getElementById('updateText').innerText = "Save";
-	    document.getElementById('cancel').removeAttribute('hidden');
-	}
-
-  </script-->
-  
-  <!-- Bootstrap core JavaScript-->
+        </div>        
+          <!-- Bootstrap core JavaScript-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="../../static/admin/vendor/jquery/jquery.min.js"></script>
   <script src="../../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -553,8 +488,195 @@
   <!-- Custom scripts for all pages-->
   <script src="../../static/admin/js/sb-admin-2.min.js"></script>
 
-<script src="../../static/admin/js/view.js"></script>
+  <script src="../../static/admin/js/view.js"></script>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 
-</body>
+   <script>
 
+	function validateForm() {
+
+		var fname = $('#fname').val();
+		var lname = $('#lname').val();
+		var email = $('#email').val();
+		var dob = $('#dob').val();
+		//var pattern = '/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/';
+
+		if(fname=='') {
+			toastr["warning"]("Firstname Cannot Be Emplty!");
+			return false;
+		}else if(lname=='') {
+			toastr["warning"]("Last Name Cannot Be Emplty!");
+			return false;
+		}else if(email=='') {
+			toastr["warning"]("Email Cannot Be Emplty!");
+			return false;
+		}else if(dob=='') {
+			toastr["warning"]("Last Name Cannot Be Emplty!");
+			return false;
+		}
+		else {
+			return true;
+		}
+		
+	}
+	
+  
+	function getUpdate() {
+
+		var retVal = confirm("Are You Sure to Apply?");
+		if(retVal==true) {	
+			var res = validateForm();
+
+			if(res==true) {
+				updateApplication();
+				return true;
+			}else {
+				return false;	
+			}
+		} 
+		else {
+			return false;	
+		} 
+		
+	}
+
+	$(document).ready(function() {
+
+
+		$("#medical").change(function() {
+			showMedicaThumb(this);
+		});
+		
+		$("#updateApplication").submit(function(event) {
+
+			event.preventDefault();
+
+			getUpdate();
+
+		});
+
+	$("#uploadFile").submit(function() {
+			
+			uploadFile();
+			
+		});
+
+
+		
+	});
+
+
+	function uploadFile() {
+
+		var formData = new FormData();
+		var file = $('#medical')[0].files[0];
+
+		formData.append("fileUpload", file);
+		
+		$.ajax({
+	        url : '/profile/visa/upload',
+	        type : 'POST',
+	        data : formData,
+	        enctype : 'multipart/form-data',
+	        contentType : false,
+	        cache : false,
+	        processData : false,
+	        beforeSend: function() {
+		        
+	        	
+	        	toastr["info"]("File is Uploading!");
+				
+		      	},
+	        success : function(response) {
+	        
+	        	//alert("sucess");
+	        	//$(this).addClass("active");
+	        	toastr["success"]("File Upload Successfully!");
+	        	
+		        },
+	        error: function(){
+
+	        	toastr["warning"]("File Upload Not Sucess! Please Check File And Reupload!");
+	        	//toastr.success("hasdasdsa","Success",{timeOut: 3000});
+		        }    
+		});
+
+		
+	}
+	
+	
+	function showMedicaThumb(inputFile) {
+
+		file = inputFile.files[0];
+		reader = new FileReader();
+
+		reader.onload = function(e) {
+			$('#medicalThumbNew').attr('src', e.target.result);
+		};
+
+		reader.readAsDataURL(file); 
+		
+	}
+	
+	
+
+	function updateApplication() {
+
+		var visa = {
+				id : $("#id").val(),
+				fname : $("#fname").val(),
+				lname : $("#lname").val(),
+				other : $("#other").val(),
+				email : $("#email").val(),
+				gender : $("#gender").val(),
+				dob : $("#dob").val(),
+				city : $("#city").val(),
+				state : $("#state").val(),
+				zip : $("#zip").val(),
+				marrage : $("#marrage").val(),
+				country : $("#country").val(),
+				studentid : $("#studentid").val(),
+				status : $("#status").val(),
+				medical : $("#medicalVal").val()
+		}
+
+
+		$.ajax({
+
+			type : "PUT",
+			contentType : "application/json",
+			url : "/profile/visa/save",
+			data : JSON.stringify(visa),
+			dataType : 'json',
+			beforeSend: function() {
+		      
+	        	toastr["info"]("Application is Updating!");
+				
+		      	},
+			success : function(result) {
+				
+				if(result.status == "Done"){
+					toastr["success"]("Application Update Successfully!");
+				}else {
+					toastr["warning"]("Application Update not Successfully!");
+				}
+				console.log(result);
+				
+			},
+			error : function(e) {
+				toastr["error"]("Error with Updating Application!");
+				console.log("Error: ",e);
+			}
+			
+		});
+
+	}
+	
+
+</script>	
+
+  
+
+    </body>
 </html>

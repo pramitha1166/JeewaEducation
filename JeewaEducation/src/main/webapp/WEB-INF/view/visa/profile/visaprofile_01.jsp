@@ -321,7 +321,14 @@
 	          <br>
 	          <p class="h4">If your application has been not verified yet? </p>
 	          <p>Click here to edit your visa application</p>
-	          <button class="btn btn-secondary mb-2">Edit My Visa Application</button>
+	
+				<security:authorize access="isAuthenticated()">
+					<form action="/profile/visa/UpdateAplication">
+				  		<input  type="hidden" value="<c:out value="${pageContext.request.remoteUser}"/>" name="username">
+				 		<input type="submit" class="btn btn-secondary mb-2" value="Edit My Visa Application">
+					</form>
+			  </security:authorize>
+	
 	
 	          <div class="row">
 	
@@ -388,6 +395,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../../static/admin/js/sb-admin-2.min.js"></script>
+
 
     </body>
 </html>

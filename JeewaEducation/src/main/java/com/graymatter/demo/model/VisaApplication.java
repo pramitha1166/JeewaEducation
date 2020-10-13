@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.istack.NotNull;
 
@@ -40,10 +41,8 @@ public class VisaApplication {
 	@Size(min = 3, max = 30)
 	private String lname;
 
-	@Size(min = 3, max = 30)
 	private String other;
-	
-	@Email 
+	 
 	@NotEmpty
 	@Column(unique = true)
 	private String email;
@@ -80,7 +79,10 @@ public class VisaApplication {
 	@Column(unique = true)
 	private String studentid;
 	
-/*	
+	
+	private String medical;
+
+	/*	
  * 
  * 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -98,6 +100,17 @@ public class VisaApplication {
 	private VisaStudent visastudent;
 	
 	
+	
+	
+	public String getMedical() {
+		return medical;
+	}
+
+
+
+	public void setMedical(String medical) {
+		this.medical = medical;
+	}
 
 
 

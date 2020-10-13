@@ -283,7 +283,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="studentTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Student Name</th>
@@ -309,28 +309,7 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                  	<c:forEach var="visastudent" items="${visastudentlist}">
-                    	<tr>
-	                      <td>${visastudent.fullname}</td>
-	                      <td>${visastudent.id}</td>
-	                      <td>${visastudent.uni}</td>
-	                      <td>${visastudent.age}</td>
-	                      <td>${visastudent.course}</td>
-	                      <td>${visastudent.sex}</td>
-	                      <td><a href="#" class="btn btn-info btn-icon-split">
-	                        <span class="icon text-white-50">
-	                          <i class="fas fa-info-circle"></i>
-	                        </span>
-	                        <span class="text">View</span>
-	                      </a></td>
-	                      <td><a href="#" class="btn btn-danger btn-icon-split">
-	                        <span class="icon text-white-50">
-	                          <i class="fas fa-trash"></i>
-	                        </span>
-	                        <span class="text">Delete</span>
-	                      </a></td>
-	                   	</tr>
-	                  </c:forEach> 
+                  
                   </tbody>
                 </table>
               </div>
@@ -399,6 +378,31 @@
 
   <!-- Page level custom scripts -->
   <script src="../static/admin/js/demo/datatables-demo.js"></script>
+  
+  <script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$.getJSON('/admin/visa-students', function(json) {
+
+			var tr = [];
+			for(var i = 0; i < json.length; i++) {
+
+				tr.push('<tr>');
+				tr.push('<td>' + json[i].id + '</td>');
+				tr.push('<td>' + json[i].nic + '</td>');
+				tr.push('<td>' + json[i].firstname + '</td>');
+				tr.push('<td>' + json[i].lastname + '</td>');
+				tr.push('</tr>');	
+			}
+
+			$("#studentTable").append($(tr.join('')));
+
+		});
+
+	});
+
+  </script>
 
 </body>
 </html>
