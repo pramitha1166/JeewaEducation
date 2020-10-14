@@ -35,7 +35,7 @@ public class VisaStudent {
 	private String sex;
 	@Column(unique = true)
 	private String username;
-	private String password;
+
 	
 	@OneToOne(mappedBy = "visastudent")
 	private VisaApplication pendingvisastd;
@@ -61,12 +61,7 @@ public class VisaStudent {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public String getUni() {
 		return uni;
 	}
@@ -139,8 +134,8 @@ public class VisaStudent {
 	public String toString() {
 		return "VisaStudent [id=" + id + ", NIC=" + NIC + ", firstname=" + firstname + ", lastname=" + lastname
 				+ ", address=" + address + ", phonenum=" + phonenum + ", email=" + email + ", uni=" + uni + ", age="
-				+ age + ", course=" + course + ", sex=" + sex + ", username=" + username + ", password=" + password
-				+ ", pendingvisastd=" + pendingvisastd + ", verifiedvisastd=" + verifiedvisastd + "]";
+				+ age + ", course=" + course + ", sex=" + sex + ", username=" + username + ", pendingvisastd="
+				+ pendingvisastd + ", verifiedvisastd=" + verifiedvisastd + "]";
 	}
 
 	

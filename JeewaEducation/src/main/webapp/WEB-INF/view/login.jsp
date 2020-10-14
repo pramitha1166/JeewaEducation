@@ -36,9 +36,9 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">VISA Administrator. Welcome Back!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back! Please Login</h1>
                   </div>
-                  <form class="user" method="post" action="adminlogin">
+                  <form class="user" method="post" action="/login">
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" name="username" placeholder="Enter UserName...">
                     </div>

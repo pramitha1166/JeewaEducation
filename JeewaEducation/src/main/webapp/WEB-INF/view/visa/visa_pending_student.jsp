@@ -22,6 +22,7 @@
 
   <!-- Custom styles for this page -->
   <link href="../static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"></head>
 </head>
 <body id="page-top">
 
@@ -363,6 +364,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="../static/admin/vendor/jquery/jquery.min.js"></script>
   <script src="../static/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -378,9 +380,26 @@
 
   <!-- Page level custom scripts -->
   <script src="../static/admin/js/demo/datatables-demo.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+
   
   <script type="text/javascript">
 
+
+	function getDelete() {
+
+		var retVal = confirm("Are You Sure to Delete?");
+		if(retVal==true) {			
+			deleteStudent();
+				return true;
+		} 
+		else {
+			return false;	
+		} 
+		
+	}
+  
 	$(document).ready(function() {
 
 		$.getJSON('/admin/visa-students', function(json) {
@@ -389,10 +408,13 @@
 			for(var i = 0; i < json.length; i++) {
 
 				tr.push('<tr>');
-				tr.push('<td>' + json[i].id + '</td>');
-				tr.push('<td>' + json[i].nic + '</td>');
 				tr.push('<td>' + json[i].firstname + '</td>');
-				tr.push('<td>' + json[i].lastname + '</td>');
+				tr.push('<td>' + json[i].id + '</td>');
+				tr.push('<td>' + json[i].univercity + '</td>');
+				tr.push('<td>' + json[i].age + '</td>');
+				tr.push('<td>' + json[i].course + '</td>');
+				tr.push('<td>' + json[i].sex + '</td>');
+				tr.push('<td><button class=\'edit\'>Edit</button>&nbsp;&nbsp;<button class=\'delete\' id='+json[i].id+' >Delete</button></td>');
 				tr.push('</tr>');	
 			}
 
@@ -400,7 +422,54 @@
 
 		});
 
+
+		$(document).delegate('.delete', 'click', function(){
+
+			if (confirm('Do you really want to delete record?')) {
+				var id = $(this).attr('id');
+				var parent = $(this).parent().parent();
+				$.ajax({
+					type: "DELETE",
+					url: "/admin/visastudent-delete/" + id,
+					cache: false,
+					success: function() {
+						toastr["success"]("File Delete Successfully!");
+					},
+					error: function() {
+						toastr["warning"]("File Delete Fail!"+id);
+					}
+				});
+				
+				//getDelete();
+
+			}
+			});
+		
+
 	});
+
+	
+	
+
+	function deleteStudent() {
+
+
+		var id = $(this).attr('id');
+		var parent = $(this).parent().parent();
+		$.ajax({
+			type: "DELETE",
+			url: "/admin/visastudent-delete/" + id,
+			cache: false,
+			success: function() {
+				toastr["success"]("File Delete Successfully!");
+			},
+			error: function() {
+				toastr["warning"]("File Delete Fail!"+id);
+			}
+		});
+
+	}
+	
 
   </script>
 

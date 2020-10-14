@@ -347,7 +347,10 @@
                             <i class="fas fa-trash"></i>
                           </span>
                           <span class="text">Delete</span>
-                        </a></td>
+                        </a>
+             
+                        
+                        </td>
                       </tr>
                      </c:forEach>
                    

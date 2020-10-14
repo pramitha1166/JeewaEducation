@@ -30,4 +30,8 @@ public class VisaStudentService {
 		return repo.findByUsername(username);
 	}
 	
+	public void deleteVisaStudent(String id) {
+		repo.deleteById(id);
+	}
+	
 }

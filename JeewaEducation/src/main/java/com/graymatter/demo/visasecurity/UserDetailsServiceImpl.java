@@ -4,27 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
-import com.graymatter.demo.model.VisaStudent;
-import com.sun.security.auth.UserPrincipal;
+import com.graymatter.demo.model.User;
+import com.graymatter.demo.repo.UserRepo;
 
-@Service
-public class VisaStudentUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	VisaStudentLoginRepo repo;
+	private UserRepo userRepo;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
 		
-		VisaStudent visastd = repo.findByUsername(username);
+		User user = userRepo.findByUsername(username);
 		
-		if(visastd==null) {
-			throw new UsernameNotFoundException("Not Found 404");
+		if(user == null) {
+			throw new UsernameNotFoundException("Could Not Found User");
 		}
 		
-		return new VisaStudentLoginPrinciple(visastd);
+		
+		return new MyUserDetails(user);
 	}
 
+	
+	
 }

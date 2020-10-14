@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class VisaAdminController {
 
-	@RequestMapping("/admin/visa")
+/*	@RequestMapping("/admin/visa")
 	public String VisaAdminLogin() {
 		return "visa/visa_admin_login";
-	}
+	}*/
 	
 	@RequestMapping("/admin/visa-dashboard")
 	public String VisaAdminDashboard() {
@@ -26,7 +26,7 @@ public class VisaAdminController {
 	public String VisaPendingStudent() {
 		return "visa/visa_pending_student";
 	}
-	
+	/*
 	@RequestMapping("/admin/adminlogin")
 	public void loginAuthentication(HttpServletRequest req, HttpServletResponse res ) throws IOException {
 		
@@ -47,7 +47,7 @@ public class VisaAdminController {
 			res.sendRedirect("/admin/visa");
 		}
 		
-	}
+	}*/
 	
 	
 }

@@ -2,11 +2,13 @@ package com.graymatter.demo.controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -169,6 +171,19 @@ public class VisaProfileController {
 		
 		return "visa/profile/updateVisaApplication";
 	}
+	
+	  @RequestMapping("/success")
+	    public void loginPageRedirect(HttpServletRequest request, HttpServletResponse response, Authentication authResult) throws IOException, ServletException {
+
+	        String role =  authResult.getAuthorities().toString();
+
+	        if(role.contains("VISASTUDENT")){
+	         response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/profile/visa/dashboard"));                            
+	         }
+	         else if(role.contains("VISAADMIN")) {
+	             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin/visa-dashboard"));
+	         }
+	    }
 	
 	
 	

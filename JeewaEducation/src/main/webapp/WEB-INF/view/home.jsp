@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -26,6 +28,7 @@
     <link rel="stylesheet" href="static/assets/css/responsive.css">
 </head>
 <body>
+
   <!-- Loader Start -->
     <div class="css-loader">
         <div class="loader-inner line-scale d-flex align-items-center justify-content-center"></div>
@@ -41,7 +44,7 @@
                             aria-hidden="true"></i>info@yourmail.com</a>
                 </div>
                 <nav class="d-flex aic">
-                    <a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                    <a href="/login" class="login"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
                     <ul class="nav social d-none d-md-flex">
                         <li><a href="https://www.facebook.com/fh5co" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
