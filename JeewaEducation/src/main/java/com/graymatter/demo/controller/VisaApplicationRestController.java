@@ -93,62 +93,7 @@ public class VisaApplicationRestController {
 	}
 	
 
-	/*
-	@PostMapping(value = "/save")
-	public Response submitApplication(@RequestParam("Addfile") MultipartFile multipartFile,
-			@RequestParam("fname") String fname,
-			@RequestParam("lname") String lname,
-			@RequestParam("other") String other,
-			@RequestParam("email") String email,
-			@RequestParam("dob") String dob,
-			@RequestParam("city") String city,
-			@RequestParam("state") String state,
-			@RequestParam("zip") int zip,
-			@RequestParam("marrage") String marrage,
-			@RequestParam("country") String country,
-			@RequestParam("studentid") String studentid,
-			@RequestParam("status") String status
-			) throws IOException {
-		
-		VisaApplication application = new VisaApplication();
-		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		application.setMedical(fileName);
-		application.setFname(fname);
-		application.setLname(lname);
-		application.setOther(other);
-		application.setEmail(email);
-		application.setCity(city);
-		application.setState(state);
-		application.setZip(zip);
-		application.setMarrage(marrage);
-		application.setCountry(country);
-		application.setStudentid(studentid);
-		application.setStatus(status);
-		
-		VisaApplication savedApplication = service.addVisaApplication(application);
-		
-		String uploadDir = "/medical-files/" + savedApplication.getId();
-		
-		Path uploadPath = Paths.get(uploadDir);
-		
-		if(!Files.exists(uploadPath)) {
-			Files.createDirectories(uploadPath);
-		}
-		
-		try (InputStream inputStream = multipartFile.getInputStream()) {
-			Path filePath = uploadPath.resolve(fileName);
-			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-		}catch(IOException e) {
-			throw new IOException("Could not save uploaded file " + fileName);
-		}
-		
-		Response response = new Response("Done",application);
-		
-		return response;
-		
-	}
 	
-	*/
 	
 	@PutMapping(value = "/save")
 	public Response updateApplication(@Valid @RequestBody VisaApplication application) {

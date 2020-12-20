@@ -34,4 +34,8 @@ public class VisaStudentService {
 		repo.deleteById(id);
 	}
 	
+	public void addVisaStudent(VisaStudent student) {
+		repo.save(student);
+	}
+	
 }

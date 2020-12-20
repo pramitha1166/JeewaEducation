@@ -18,4 +18,9 @@ public class HomeController {
 		return "login";
 	}
 	
+	@RequestMapping("/apply")
+	public String apply() {
+		return "apply";
+	}
+	
 }

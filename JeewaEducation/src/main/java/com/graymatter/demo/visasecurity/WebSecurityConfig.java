@@ -57,6 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/").permitAll()
+		.antMatchers("/apply").permitAll()
 		.antMatchers("/static/**").permitAll()
 		.antMatchers("/admin/visa-dashboard").hasAuthority("VISAADMIN")
 		.antMatchers("/admin/visa-applications").hasAuthority("VISAADMIN")

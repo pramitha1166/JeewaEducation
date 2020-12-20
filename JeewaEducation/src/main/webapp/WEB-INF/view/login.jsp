@@ -54,6 +54,9 @@
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="login">                                   
                   </form>
                   <hr>
+                  <div class="">or Sign Up With:</div>
+                  <p><a href="/oauth2/authorize/google"><img src="http://pngimg.com/uploads/google/google_PNG19635.png" style="height:60px"></a></p>
+                  <hr>
                   <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div>

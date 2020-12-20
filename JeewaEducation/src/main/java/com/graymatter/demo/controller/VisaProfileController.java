@@ -54,10 +54,20 @@ public class VisaProfileController {
 	
 	
 	@RequestMapping(value = "/profile/visa/accessvisa", method = RequestMethod.GET)
-	public void visaprofile01(@RequestParam String username, HttpServletResponse response) {
+	public String visaprofile01(@RequestParam String username, HttpServletResponse response) {
 		
 		
 		VisaStudent visastd = service.findByUser(username);
+		
+		if(visastd==null) {
+			//try {
+				//response.sendRedirect("/profile/visa/dashboard");
+				return "redirect:/profile/visa/dashboard";
+		//	} catch (IOException e) {
+				// TODO Auto-generated catch block
+			//	e.printStackTrace();
+			//}
+		}
 		
 		VisaApplication application = service1.findByStudentid(visastd.getId());
 		
@@ -82,29 +92,32 @@ public class VisaProfileController {
 		System.out.println(application==null || application.getStatus().equals("not-verified"));*/
 		
 		if (application==null || application.getStatus().equals("not-verified")) {
-			try {
+			/*try {
 				response.sendRedirect("/profile/visa/profile_01");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			//return "redirect:/profile/visa/profile_01";
+			}*/
+			return "redirect:/profile/visa/profile_01";
 		}else if(application.getStatus().equals("verified")) {
-			try {
+			/*try {
 				response.sendRedirect("/profile/visa/profile_03");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
+			return "redirect:/profile/visa/profile_03";
 		}else {
 		
-			try {
+		/*	try {
 				response.sendRedirect("/");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
+			return "redirect:/";
 		}
+		//return username;
 	}
 	
 	@GetMapping("/profile/visa/profile_02")

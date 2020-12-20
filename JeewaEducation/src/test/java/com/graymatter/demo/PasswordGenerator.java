@@ -8,7 +8,7 @@ public class PasswordGenerator {
 		// TODO Auto-generated method stub
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String rawPassword = "hasitha";
+		String rawPassword = "hashini";
 		String encodedPassword = encoder.encode(rawPassword);
 		
 		System.out.println(encodedPassword);
